@@ -1,0 +1,267 @@
+% SPDX-License-Identifier: GPL-2.0-only
+\documentclass[11pt, a4paper]{article}
+
+% Packages for formatting and functionality
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}   % For professional looking tables
+\usepackage{listings}   % For code snippets
+\usepackage{xcolor}     % For syntax highlighting colors
+\usepackage{hyperref}   % For clickable links
+\usepackage{float}      % For figure placement
+\usepackage{amsmath}    % For mathematical formulas
+\usepackage{caption}
+
+\hypersetup{
+    pdftitle={A One-Shot Wakeup Boost for Long Uninterruptible Sleeps in the Linux Fair Scheduler},
+    pdfauthor={Francesco Territo and David Carlino}
+}
+
+% Page Layout Settings
+\geometry{
+    top=2cm,
+    bottom=2cm,
+    left=2.5cm,
+    right=2.5cm
+}
+
+% Code snippet styling
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% Title Information
+\title{\textbf{A One-Shot Wakeup Boost for Long Uninterruptible Sleeps in the Linux Fair Scheduler}}
+
+\author{Francesco Territo \and David Carlino}
+\date{August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Linux fair scheduler is designed to distribute processor time between tasks while also preserving their responsiveness. Linux 6.13.9 uses the Earliest Eligible Virtual Deadline First (EEVDF) policy for this purpose.
+However, this fairness can disadvantage I/O-bound processes during high CPU contention, leading to increased latency.
+This report documents the implementation and benchmarking of a wakeup boost mechanism for Linux kernel 6.13.9.
+The final implementation applies a temporary, one-shot boost to tasks waking after a long uninterruptible sleep. Its performance must be measured again before publishing quantitative results.
+\end{abstract}
+
+\section{Introduction and Motivation}
+I/O-bound processes often voluntarily yield the CPU to wait for resources. When they wake up, they rejoin the runqueue and can still spend time waiting behind other eligible tasks during high CPU contention, resulting in poor responsiveness.
+The objective of this project was to implement a specific optimization within the fair scheduler to favor these wakeups.
+The proposed solution introduces a \textbf{wakeup boost mechanism} that temporarily lowers the virtual runtime (\texttt{vruntime}) of tasks waking after a long uninterruptible sleep. It does not change their static priority.
+This modification aims to reduce runnable wait time, measured through the \texttt{wait\_sum} scheduler statistic; thereby improving interactivity in mixed-workload scenarios.
+
+\section{Background (Fair scheduler internals)}
+    \begin{enumerate}
+        \item   Each CPU has its own struct rq (runqueue), which keeps track of runnable processes on the CPU.
+                The struct cfs\_rq is a sub-structure that represents the CFS-specific runqueue (there can be one per
+                CPU and per scheduling group).
+        
+        \item   Each task has a vruntime (Virtual Runtime), which represents weighted execution time and grows according to the task's scheduling weight.
+                If a task uses the CPU, its vruntime grows. In Linux 6.13.9, vruntime is also used to calculate lag, eligibility and the virtual deadline used by EEVDF.
+        
+        \item   Runnable scheduling entities are inserted into a RB (balanced) tree; with EEVDF this tree is ordered by virtual deadline rather than simply by vruntime.
+                The scheduler chooses an eligible task with the earliest virtual deadline. Therefore, the selected task is not always just the one with the smallest vruntime, even though changing vruntime can influence both eligibility and deadline calculation.
+                The runqueue also tracks min\_vruntime as its progressing virtual-time reference.
+                Time needs to search, delete or add a task is: $O(\log n)$ , where n is the number of entries in the
+                tree.
+    \end{enumerate}
+    It is also useful to describe these functions, which will be used from now onwards:
+    \begin{itemize}
+        \item copy\_process():  It is the main function for the creation of a new process or thread.
+                                It allocates and initializes the structure task\_struct for the new task.
+
+        \item enqueue\_task\_fair():    Used to insert a task in the runqueue (it is a structure that tracks all tasks that are ready to run on a CPU),
+                                        updating its scheduling state so that EEVDF can evaluate eligibility and virtual deadline.
+
+        \item place\_entity():          Function that places a waking or newly created scheduling entity by updating its vruntime, lag and virtual deadline.
+
+        \item dequeue\_task\_fair(): Handles a task leaving the fair runqueue due to sleep or termination, including EEVDF's delayed-dequeue case.
+
+        \item try\_to\_wake\_up(): Manages the awakening of a sleeping task, more in detail:
+            \begin{enumerate}
+                \item Checks if the task is sleeping
+                \item Sets the task status to “running”
+                \item Chooses the CPU on which to enqueue the task. In the benchmark, QEMU exposes two virtual CPUs and the target workload is pinned inside the guest.
+            \end{enumerate}
+        \end{itemize}
+\section{Implementation}
+
+\subsection{Kernel Modifications}
+The modifications target the Linux 6.13.9 kernel source, specifically \texttt{include/linux/sched.h}, \texttt{kernel/sched/fair.c} and \texttt{kernel/fork.c}.
+
+\subsubsection{Data Structure Changes}
+The \texttt{task\_struct} definition was extended to track the timestamp of the last uninterruptible sleep and a flag for boost eligibility:
+
+\begin{lstlisting}[language=C, caption=Changes to include/linux/sched.h]
+struct task_struct {
+	/* ... existing fields ... */
+	/* One-shot wakeup boost after a long uninterruptible sleep. */
+	u64 last_uninterruptible_sleep_start;
+	unsigned wakeup_boost_pending:1;
+	/* ... */
+};
+\end{lstlisting}
+
+The wakeup-boost fields are initialized in \texttt{kernel/fork.c}:
+
+\begin{lstlisting}[language=C, caption=Changes to kernel/fork.c]
+	/* Do not inherit wakeup boost state from the parent. */
+	p->last_uninterruptible_sleep_start = 0;
+	p->wakeup_boost_pending = 0;
+\end{lstlisting}
+
+The core scheduler modifications are located in \texttt{kernel/sched/fair.c}:
+
+\begin{lstlisting}[language=C, caption=Wakeup qualification in kernel/sched/fair.c]
+static void prepare_wakeup_boost(struct rq *rq,
+				 struct task_struct *p, int flags)
+{
+	s64 sleep_time;
+
+	if (!(flags & ENQUEUE_WAKEUP))
+		return;
+
+	p->wakeup_boost_pending = 0;
+	if (!p->last_uninterruptible_sleep_start)
+		return;
+
+	sleep_time = (s64)(rq_clock(rq) -
+			   p->last_uninterruptible_sleep_start);
+	p->last_uninterruptible_sleep_start = 0;
+
+	if (sleep_time > NSEC_PER_MSEC)
+		p->wakeup_boost_pending = 1;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=C, caption=Sleep timestamp in dequeue\_task\_fair]
+	if (flags & DEQUEUE_SLEEP) {
+		unsigned int state = READ_ONCE(p->__state);
+
+		p->wakeup_boost_pending = 0;
+		if (state & TASK_UNINTERRUPTIBLE)
+			p->last_uninterruptible_sleep_start = rq_clock(rq);
+		else
+			p->last_uninterruptible_sleep_start = 0;
+	}
+\end{lstlisting}
+
+\begin{lstlisting}[language=C, caption=Changes to place\_entity in kernel/sched/fair.c]
+	se->vruntime = vruntime - lag;
+
+	/* Apply one bounded boost to the qualifying wakeup. */
+	if ((flags & ENQUEUE_WAKEUP) && entity_is_task(se)) {
+		struct task_struct *tsk = task_of(se);
+
+		if (tsk->wakeup_boost_pending) {
+			u64 boost = sysctl_sched_base_slice;
+			u64 floor = cfs_rq->min_vruntime - vslice;
+
+			se->vruntime -= calc_delta_fair(boost, se);
+
+			if ((s64)(se->vruntime - floor) < 0)
+				se->vruntime = floor;
+			tsk->wakeup_boost_pending = 0;
+		}
+	}
+\end{lstlisting}
+
+
+\subsubsection{Wakeup Detection Logic}
+The logic uses \texttt{TASK\_UNINTERRUPTIBLE} transitions as a practical heuristic for an I/O-like sleep. This state is also used by waits which are not real I/O, therefore the patch is detecting a scheduling pattern rather than the exact cause of the sleep.
+\begin{itemize}
+    \item \textbf{Dequeue Hook:} When a task enters an uninterruptible sleep, \path{last_uninterruptible_sleep_start} captures the current \texttt{rq\_clock}.
+    \item \textbf{Enqueue Hook:} Upon wakeup, the sleep duration is calculated as $(T_{now} - T_{sleep})$. If this duration exceeds a \textbf{1ms threshold} ($1,000,000$ ns), the task is marked as eligible for one wakeup boost, and \path{wakeup_boost_pending} is set to 1.
+\end{itemize}
+These hooks are independent from the scheduler-statistics update paths. The benchmark still enables the \texttt{sched\_schedstats} sysctl because \texttt{wait\_sum}, the measured value, is a scheduler statistic.
+
+\subsubsection{Applying the Boost}
+In the fair scheduler, lowering \texttt{vruntime} can improve the task's eligibility and can also influence the virtual deadline calculated during placement. This is a temporary scheduling advantage rather than a change to the task's static priority. The modification manipulates \texttt{vruntime} in the \texttt{place\_entity} function:
+
+\begin{equation}
+    vruntime_{new} = vruntime_{original} - \operatorname{calc\_delta\_fair}(\texttt{sysctl\_sched\_base\_slice}, task)
+\end{equation}
+
+Subtracting one weight-adjusted standard base slice from the waking task's \texttt{vruntime} effectively "refunds" virtual time. Under EEVDF this can make the task eligible sooner and give it an earlier virtual deadline, but it does not guarantee immediate preemption in every scheduler state. To preserve a bound, the resulting \texttt{vruntime} is clamped so it does not drop below the runqueue's minimum \texttt{vruntime} minus one virtual slice. If EEVDF retained the sleeping entity through delayed dequeue, the patch removes it from the deadline-ordered tree before changing its placement and then inserts it again, keeping the tree ordering and augmented data consistent.
+\section{Methodology}
+
+\subsection{Benchmarking Environment}
+To isolate scheduler mechanics from hardware jitter, the benchmark is conducted in a controlled QEMU environment:
+\begin{itemize}
+    \item \textbf{Host:} Ubuntu 22.04, with the QEMU process restricted to isolated cores (\texttt{taskset -c 2,3}) and assigned real-time priority (\texttt{chrt -r 99}) to reduce host-side interference.
+    \item \textbf{Guest:} QEMU emulation of an ARM Cortex-A9 (Vexpress), running Linux Kernel 6.13.9 with Full Preemption enabled (\texttt{CONFIG\_PREEMPT=y}) and a 1000Hz Timer.
+    \item \textbf{Virtualization:} \texttt{accel=tcg} with \texttt{thread=multi} allows QEMU to execute guest vCPUs on separate host threads. The benchmark does not use \texttt{-icount}, therefore this setup is not instruction-count deterministic; \texttt{-rtc clock=vm} only makes the guest clock follow virtual time.
+\end{itemize}
+This phase of project development was the most important and the one which was the most time consuming (around 2 months).
+It is really important to understand why; which is that when trying to verify if a modification is properly designed and applied to the kernel, 
+it must be compared to a benchmark run with the vanilla kernel (unmodified).
+But, if the benchmarking environment is heavily affected by noise it is impossible to measure meaningful data. For each run of the vanilla and
+the patched kernel, each would record very different data from the previous runs; in the case of few iterations, the risk of getting fooled by randomness is very high (intended as taking future design decisions based on trash data).
+With a high number of iterations (let's say 100) part of the noise can be averaged out, but the run also lasts many hours, therefore reducing it before starting was still important.
+
+To solve this, working on a PC running Linux natively (rather than in a virtual machine) is essential because GRUB can be configured to isolate one or more cores at boot time
+and reserve them for specific tasks. In this setup, the isolated cores were used through the QEMU configuration as follows:
+
+\begin{itemize}
+    \item Modify this line in /etc/default/grub to isolate CPU cores 2 and 3: \\
+          GRUB\_CMDLINE\_LINUX\_DEFAULT="quiet splash isolcpus=2,3"
+    \item Run \texttt{sudo update-grub} and reboot after changing the GRUB configuration.
+    \item Restrict the complete QEMU process to the host CPU set composed of cores 2 and 3. This does not enforce a permanent one-to-one mapping between a host core and a guest vCPU.
+    \item Inside the guest, pin both the CPU-bound workload and the I/O-like target to vCPU 1, thus effectively creating contention on the same guest runqueue. Guest vCPU 0 remains available for other operating-system work.
+\end{itemize}
+
+By doing so, host-side interference was reduced enough to obtain measurements which were much more repeatable than the first runs.
+
+\subsection{Workloads}
+Custom C executables generate controlled load scenarios. The number of processes is tunable from the main \path{wakeup_boost_test.sh} script:
+\begin{itemize}
+    \item \textbf{\texttt{cpu\_load} (Noise):} A math-heavy process calculating sine, cosine, and square roots in an infinite loop. Multiple instances (1 to 12) are spawned to saturate the runqueue.
+    \item \textbf{\texttt{io\_load} (Target):} A process that reads from a custom kernel module (\texttt{mychardev}). The module forces a 2ms uninterruptible sleep per read operation, creating a controlled synthetic I/O-like pattern.
+\end{itemize}
+
+To further reduce noise, the frequent printf calls used inside the read loop during the debug phase are removed since terminal output was one of the instructions which slowed execution the most.
+
+\subsection{Metric}
+The primary metric used is \textbf{\texttt{wait\_sum}}, retrieved from the kernel's internal scheduler statistics via \texttt{/proc/[pid]/sched}. 
+Unlike wall-clock time, which is dominated by the sleep duration itself, \texttt{wait\_sum} specifically measures the time a task spent \textit{runnable} (waiting on the runqueue) 
+but \textit{not running}. This focuses the measurement on the latency introduced while waiting for the scheduler.
+When at least four samples are available, the analyzer removes outliers via Interquartile Range before calculating the final averages.
+
+\section{Validation Status}
+
+The quantitative results from the previous implementation are intentionally not included because they do not validate the final patch documented here. The patch applies cleanly to Linux 6.13.9 and the modified scheduler objects compile, but a fresh paired QEMU run is still required before making a performance claim.
+
+The practical test uses 6 competing CPU-bound processes and 3 main iterations. The complete performance run keeps the longer matrix of 1 through 12 competing processes and 100 iterations for each scenario. The benchmark first measures the unmodified fair scheduler, then applies the patch and repeats the same workload. Generated logs and graphs remain local under \path{.build/results/}.
+
+\section{Conclusion}
+The implementation of the one-shot wakeup boost is complete. Identifying a wakeup after a long uninterruptible sleep and applying a bounded \texttt{vruntime} bonus can improve EEVDF eligibility and virtual deadline placement without changing the task's static priority. It does not detect block I/O directly and does not guarantee immediate preemption.
+
+There are still limits which are important to keep clear: the workload is synthetic, the unmodified run is completed before the patched run rather than interleaving their samples, and the experiment does not measure CPU throughput, starvation or wider system stability. The performance effect of the final implementation must be established by the new benchmark run before the project can report a quantitative improvement.
+
+\end{document}

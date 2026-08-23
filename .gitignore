@@ -1,0 +1,25 @@
+# Downloaded upstream kernel source and archive
+/linux-6.13.9/
+/linux-6.13.9.tar.xz
+
+# Local benchmark and build outputs
+/.build/
+/legacy_results/
+/rootfs/
+/C_files/cpu_load
+/C_files/cpu_load_*
+/C_files/io_load
+/C_files/kill_cpu_loads
+/C_files/cpu_pids.txt
+/before_output.txt
+/after_output.txt
+/results.dat
+/report/benchmark_comparison.png
+__pycache__/
+*.py[cod]
+
+# LaTeX intermediate files (the final PDF remains tracked)
+/report/*.aux
+/report/*.log
+/report/*.out
+/report/*.toc
