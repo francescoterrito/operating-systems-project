@@ -67,7 +67,7 @@
 The Linux fair scheduler is designed to distribute processor time between tasks while also preserving their responsiveness. Linux 6.13.9 uses the Earliest Eligible Virtual Deadline First (EEVDF) policy for this purpose.
 However, this fairness can disadvantage I/O-bound processes during high CPU contention, leading to increased latency.
 This report documents the implementation and benchmarking of a wakeup boost mechanism for Linux kernel 6.13.9.
-The final implementation applies a temporary, one-shot boost to tasks waking after a long uninterruptible sleep. Its performance must be measured again before publishing quantitative results.
+The final implementation applies a temporary, one-shot boost to tasks waking after a long uninterruptible sleep. In the synthetic benchmark, the IQR-filtered scenario means show a reduction in target-task runnable wait time between 75.2\% and 96.9\% across the tested contention levels.
 \end{abstract}
 
 \section{Introduction and Motivation}
@@ -214,7 +214,7 @@ Subtracting one weight-adjusted standard base slice from the waking task's \text
 \subsection{Benchmarking Environment}
 To isolate scheduler mechanics from hardware jitter, the benchmark is conducted in a controlled QEMU environment:
 \begin{itemize}
-    \item \textbf{Host:} Ubuntu 22.04, with the QEMU process restricted to isolated cores (\texttt{taskset -c 2,3}) and assigned real-time priority (\texttt{chrt -r 99}) to reduce host-side interference.
+    \item \textbf{Host:} Ubuntu 24.04.4 on an Intel Core i7-6700, with the QEMU process restricted to isolated logical CPUs (\texttt{taskset -c 2,3}) and assigned real-time priority (\texttt{chrt -r 99}) to reduce host-side interference. These logical CPUs belong to separate physical cores, although their SMT siblings 6 and 7 were not isolated.
     \item \textbf{Guest:} QEMU emulation of an ARM Cortex-A9 (Vexpress), running Linux Kernel 6.13.9 with Full Preemption enabled (\texttt{CONFIG\_PREEMPT=y}) and a 1000Hz Timer.
     \item \textbf{Virtualization:} \texttt{accel=tcg} with \texttt{thread=multi} allows QEMU to execute guest vCPUs on separate host threads. The benchmark does not use \texttt{-icount}, therefore this setup is not instruction-count deterministic; \texttt{-rtc clock=vm} only makes the guest clock follow virtual time.
 \end{itemize}
@@ -225,14 +225,14 @@ But, if the benchmarking environment is heavily affected by noise it is impossib
 the patched kernel, each would record very different data from the previous runs; in the case of few iterations, the risk of getting fooled by randomness is very high (intended as taking future design decisions based on trash data).
 With a high number of iterations (let's say 100) part of the noise can be averaged out, but the run also lasts many hours, therefore reducing it before starting was still important.
 
-To solve this, working on a PC running Linux natively (rather than in a virtual machine) is essential because GRUB can be configured to isolate one or more cores at boot time
-and reserve them for specific tasks. In this setup, the isolated cores were used through the QEMU configuration as follows:
+To solve this, working on a PC running Linux natively (rather than in a virtual machine) is essential because GRUB can be configured to isolate one or more logical CPUs at boot time
+and reduce ordinary host scheduling on them. In this setup, the isolated logical CPUs were used through the QEMU configuration as follows:
 
 \begin{itemize}
-    \item Modify this line in /etc/default/grub to isolate CPU cores 2 and 3: \\
+    \item Modify this line in /etc/default/grub to isolate logical CPUs 2 and 3: \\
           GRUB\_CMDLINE\_LINUX\_DEFAULT="quiet splash isolcpus=2,3"
     \item Run \texttt{sudo update-grub} and reboot after changing the GRUB configuration.
-    \item Restrict the complete QEMU process to the host CPU set composed of cores 2 and 3. This does not enforce a permanent one-to-one mapping between a host core and a guest vCPU.
+    \item Restrict the complete QEMU process to the host CPU set composed of logical CPUs 2 and 3. This does not enforce a permanent one-to-one mapping between a host CPU and a guest vCPU.
     \item Inside the guest, pin both the CPU-bound workload and the I/O-like target to vCPU 1, thus effectively creating contention on the same guest runqueue. Guest vCPU 0 remains available for other operating-system work.
 \end{itemize}
 
@@ -253,15 +253,52 @@ Unlike wall-clock time, which is dominated by the sleep duration itself, \texttt
 but \textit{not running}. This focuses the measurement on the latency introduced while waiting for the scheduler.
 When at least four samples are available, the analyzer removes outliers via Interquartile Range before calculating the final averages.
 
-\section{Validation Status}
+\section{Results}
 
-The quantitative results from the previous implementation are intentionally not included because they do not validate the final patch documented here. The patch applies cleanly to Linux 6.13.9 and the modified scheduler objects compile, but a fresh paired QEMU run is still required before making a performance claim.
+The complete benchmark of the final patch was run on August 25, 2026. It measured 100 iterations at each load from 1 to 12 competing CPU-bound processes for both the vanilla and patched kernels, giving 1,200 samples per kernel and 2,400 samples in total. The complete invocation took just over 14 hours. The benchmark first measured the unmodified fair scheduler, then applied the patch and repeated the same workload.
 
-The practical test uses 6 competing CPU-bound processes and 3 main iterations. The complete performance run keeps the longer matrix of 1 through 12 competing processes and 100 iterations for each scenario. The benchmark first measures the unmodified fair scheduler, then applies the patch and repeats the same workload. Generated logs and graphs remain local under \path{.build/results/}.
+Table~\ref{tab:final-results} reports the means after applying the IQR filter independently to each kernel and load scenario. Every tested scenario shows lower runnable wait time with the patch. The smallest reduction is 75.2\% with 4 competing processes, while the largest is 96.9\% with 1 competing process. The equal-weight reduction across the 12 filtered scenario means is 79.5\%.
 
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{rrrr}
+\toprule
+CPU children & Vanilla (ms) & Patched (ms) & Reduction \\
+\midrule
+1  & 1948.47  & 60.88   & 96.9\% \\
+2  & 2104.01  & 420.78  & 80.0\% \\
+3  & 3455.38  & 734.10  & 78.8\% \\
+4  & 4632.36  & 1150.53 & 75.2\% \\
+5  & 5834.82  & 1356.91 & 76.7\% \\
+6  & 6876.73  & 1594.71 & 76.8\% \\
+7  & 7727.35  & 1708.93 & 77.9\% \\
+8  & 8657.75  & 1800.17 & 79.2\% \\
+9  & 9324.75  & 2041.04 & 78.1\% \\
+10 & 9862.80  & 1810.89 & 81.6\% \\
+11 & 10399.17 & 1985.55 & 80.9\% \\
+12 & 10804.12 & 2088.70 & 80.7\% \\
+\bottomrule
+\end{tabular}
+\caption{IQR-filtered mean \texttt{wait\_sum} for 100 iterations per scenario.}
+\label{tab:final-results}
+\end{table}
+
+Figure~\ref{fig:final-results} shows the same means together with their standard deviations. The raw, unfiltered data produces the same conclusion: its equal-weight mean reduction is also 79.5\%, and all 12 scenarios improve. IQR filtering removed 21 of 1,200 vanilla samples and 30 of 1,200 patched samples.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{benchmark_comparison.png}
+    \caption{Target-task runnable wait time before and after the wakeup boost. Error bars show the standard deviation after per-scenario IQR filtering.}
+    \label{fig:final-results}
+\end{figure}
+
+The result supports a performance claim only for this controlled workload: the patch reduces the measured runnable wait time of the target task under the tested contention. Both kernels completed all scenarios and shut down normally. The identical Vexpress boot and device warnings in both logs are unrelated to the scheduler modification.
+
+\clearpage
 \section{Conclusion}
 The implementation of the one-shot wakeup boost is complete. Identifying a wakeup after a long uninterruptible sleep and applying a bounded \texttt{vruntime} bonus can improve EEVDF eligibility and virtual deadline placement without changing the task's static priority. It does not detect block I/O directly and does not guarantee immediate preemption.
 
-There are still limits which are important to keep clear: the workload is synthetic, the unmodified run is completed before the patched run rather than interleaving their samples, and the experiment does not measure CPU throughput, starvation or wider system stability. The performance effect of the final implementation must be established by the new benchmark run before the project can report a quantitative improvement.
+There are still limits which are important to keep clear: the workload is synthetic, the unmodified run is completed before the patched run rather than interleaving their samples, and the experiment does not measure CPU throughput, starvation or wider system stability. The completed benchmark establishes the measured reduction for this controlled workload, but it does not establish a general performance improvement for real I/O workloads.
 
 \end{document}

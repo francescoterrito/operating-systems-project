@@ -1,0 +1,1667 @@
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: Host is down
+audio: Could not create a backend for voice `lm4549.out'
+Booting Linux on physical CPU 0x0
+Linux version 6.13.9 (root@fra) (arm-linux-gnueabi-gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #4 SMP PREEMPT Tue Aug 25 16:32:43 CEST 2026
+CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+OF: fdt: Machine model: V2P-CA9
+Memory policy: Data cache writealloc
+cma: Reserved 16 MiB at 0x6f000000 on node -1
+Zone ranges:
+  Normal   [mem 0x0000000060000000-0x000000006fffffff]
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000060000000-0x000000006fffffff]
+Initmem setup node 0 [mem 0x0000000060000000-0x000000006fffffff]
+Reserved memory: created DMA memory pool at 0x4c000000, size 8 MiB
+OF: reserved mem: initialized node vram@4c000000, compatible id shared-dma-pool
+OF: reserved mem: 0x4c000000..0x4c7fffff (8192 KiB) nomap non-reusable vram@4c000000
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 0 at arch/arm/kernel/devtree.c:129 arm_dt_init_cpu_maps+0x130/0x214
+DT /cpu 3 nodes greater than max cores 2, capping them
+Modules linked in:
+CPU: 0 UID: 0 PID: 0 Comm: swapper Not tainted 6.13.9 #4
+Hardware name: ARM-Versatile Express
+Call trace: 
+ unwind_backtrace from show_stack+0x10/0x14
+ show_stack from dump_stack_lvl+0x54/0x68
+ dump_stack_lvl from __warn+0x7c/0x158
+ __warn from warn_slowpath_fmt+0x12c/0x1bc
+ warn_slowpath_fmt from arm_dt_init_cpu_maps+0x130/0x214
+ arm_dt_init_cpu_maps from setup_arch+0x454/0x698
+ setup_arch from start_kernel+0x60/0x6b4
+ start_kernel from 0x0
+---[ end trace 0000000000000000 ]---
+percpu: Embedded 17 pages/cpu s39564 r8192 d21876 u69632
+Kernel command line: console=ttyAMA0 root=/dev/ram0 rw nokaslr isolcpus=1
+Unknown kernel command line parameters "nokaslr", will be passed to user space.
+printk: log buffer data + meta data: 16384 + 51200 = 67584 bytes
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+Built 1 zonelists, mobility grouping on.  Total pages: 65536
+mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+rcu: Preemptible hierarchical RCU implementation.
+rcu: 	RCU event tracing is enabled.
+	Trampoline variant of Tasks RCU enabled.
+	Tracing variant of Tasks RCU enabled.
+rcu: RCU calculated value of scheduler-enlistment delay is 100 jiffies.
+RCU Tasks: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+L2C: platform modifies aux control register: 0x02020000 -> 0x02420000
+L2C: DT/platform modifies aux control register: 0x02020000 -> 0x02420000
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 dynamic clock gating disabled, standby mode disabled
+L2C-310 cache controller enabled, 8 ways, 128 kB
+L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x46420001
+rcu: srcu_init: Setting srcu_struct sizes based on contention.
+sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+clocksource: arm,sp804: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275 ns
+smp_twd: clock not found -2
+Console: colour dummy device 80x30
+Calibrating local timer... 99.88MHz.
+Calibrating delay loop... 884.73 BogoMIPS (lpj=442368)
+CPU: Testing write buffer coherency: ok
+CPU0: Spectre v2: using BPIALL workaround
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x60100000 - 0x60100060
+rcu: Hierarchical SRCU implementation.
+rcu: 	Max phase no-delay instances is 400.
+Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+smp: Bringing up secondary CPUs ...
+CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+CPU1: Spectre v2: using BPIALL workaround
+smp: Brought up 1 node, 2 CPUs
+SMP: Total of 2 processors activated (1781.76 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+Memory: 222448K/262144K available (9216K kernel code, 758K rwdata, 2300K rodata, 1024K init, 187K bss, 21852K reserved, 16384K cma-reserved)
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+NET: Registered PF_NETLINK/PF_ROUTE protocol family
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor ladder
+hw-breakpoint: debug architecture 0x4 unsupported.
+Serial: AMBA PL011 UART driver
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /clcd@10020000
+/clcd@10020000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+/clcd@10020000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/clcd@1f000
+/bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/i2c@16000/dvi-transmitter@39: Fixed dependency cycle(s) with /clcd@10020000
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+Advanced Linux Sound Architecture Driver Initialized.
+clocksource: Switched to clocksource arm,sp804
+NET: Registered PF_INET protocol family
+IP idents hash table entries: 4096 (order: 3, 32768 bytes, linear)
+tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+TCP established hash table entries: 2048 (order: 1, 8192 bytes, linear)
+TCP bind hash table entries: 2048 (order: 3, 32768 bytes, linear)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 1, 14336 bytes, linear)
+UDP-Lite hash table entries: 256 (order: 1, 14336 bytes, linear)
+NET: Registered PF_UNIX/PF_LOCAL protocol family
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp-with-tls transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+workingset: timestamp_bits=30 max_order=16 bucket_order=0
+Unpacking initramfs...
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+9p: Installing v9fs 9p2000 file system support
+io scheduler mq-deadline registered
+io scheduler kyber registered
+io scheduler bfq registered
+ledtrig-cpu: registered to indicate activity on CPUs
+sii902x 0-0060: supply iovcc not found, using dummy regulator
+sii902x 0-0060: supply cvcc12 not found, using dummy regulator
+simple-pm-bus bus@40000000:motherboard-bus@40000000:iofpga@7,00000000: Failed to create device link (0x180) with supplier dcc:clock-controller-2 for /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/sysctl@1000
+simple-pm-bus bus@40000000:motherboard-bus@40000000:iofpga@7,00000000: Failed to create device link (0x180) with supplier dcc:clock-controller-2 for /bus@40000000/motherboard-bus@40000000/iofpga@7,00000000/sysctl@1000
+physmap-flash 40000000.flash: physmap platform flash device: [mem 0x40000000-0x43ffffff]
+40000000.flash: Found 2 x16 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+physmap-flash 40000000.flash: physmap platform flash device: [mem 0x44000000-0x47ffffff]
+40000000.flash: Found 2 x16 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+Concatenating MTD devices:
+(0): "40000000.flash"
+(1): "40000000.flash"
+into device "40000000.flash"
+Freeing initrd memory: 5048K
+physmap-flash 48000000.psram: physmap platform flash device: [mem 0x48000000-0x49ffffff]
+smsc911x 4e000000.ethernet eth0: MAC Address: 52:54:00:12:34:56
+isp1760 4f000000.usb: isp1760 bus width: 32, oc: digital
+isp1760 4f000000.usb: NXP ISP1760 USB Host Controller
+isp1760 4f000000.usb: new USB bus registered, assigned bus number 1
+isp1760 4f000000.usb: Scratch test failed. 0x00000000
+isp1760 4f000000.usb: can't setup: -19
+isp1760 4f000000.usb: USB bus 1 deregistered
+usbcore: registered new interface driver usb-storage
+rtc-pl031 10017000.rtc: registered as rtc0
+rtc-pl031 10017000.rtc: setting system clock to 2026-08-25T14:33:02 UTC (1787668382)
+mmci-pl18x 10005000.mmci: Got CD GPIO
+mmci-pl18x 10005000.mmci: Got WP GPIO
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+mmci-pl18x 10005000.mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 31,32 (pio)
+armv7-pmu pmu: hw perfevents: failed to find logical CPU for cpu
+armv7-pmu pmu: hw perfevents: failed to find logical CPU for cpu
+hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 (8000003f) counters available
+aaci-pl041 10004000.aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 37
+aaci-pl041 10004000.aaci: FIFO 512 entries
+NET: Registered PF_PACKET protocol family
+9pnet: Installing 9P2000 support
+Registering SWP/SWPB emulation handler
+input: AT Raw Set 2 keyboard as /devices/platform/bus@40000000/bus@40000000:motherboard-bus@40000000/bus@40000000:motherboard-bus@40000000:iofpga@7,00000000/10006000.kmi/serio0/input/input0
+10009000.serial: ttyAMA0 at MMIO 0x10009000 (irq = 38, base_baud = 0) is a PL011 rev1
+printk: legacy console [ttyAMA0] enabled
+1000a000.serial: ttyAMA1 at MMIO 0x1000a000 (irq = 39, base_baud = 0) is a PL011 rev1
+1000b000.serial: ttyAMA2 at MMIO 0x1000b000 (irq = 40, base_baud = 0) is a PL011 rev1
+1000c000.serial: ttyAMA3 at MMIO 0x1000c000 (irq = 41, base_baud = 0) is a PL011 rev1
+drm-clcd-pl111 1001f000.clcd: assigned reserved memory node vram@4c000000
+drm-clcd-pl111 1001f000.clcd: using device-specific reserved memory
+drm-clcd-pl111 1001f000.clcd: core tile graphics present
+drm-clcd-pl111 1001f000.clcd: this device will be deactivated
+drm-clcd-pl111 1001f000.clcd: Versatile Express init failed - -19
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+debugfs: Directory 'bus@40000000:motherboard-bus@40000000:mcc:muxfpga' with parent 'regmap' already present!
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+debugfs: Directory 'bus@40000000:motherboard-bus@40000000:mcc:muxfpga' with parent 'regmap' already present!
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+clk: Disabling unused clocks
+ALSA device list:
+  #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 37
+Freeing unused kernel image (initmem) memory: 1024K
+Run /init as init process
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/bus@40000000/bus@40000000:motherboard-bus@40000000/bus@40000000:motherboard-bus@40000000:iofpga@7,00000000/10007000.kmi/serio1/input/input2
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+debugfs: Directory 'bus@40000000:motherboard-bus@40000000:mcc:muxfpga' with parent 'regmap' already present!
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+debugfs: Directory 'bus@40000000:motherboard-bus@40000000:mcc:muxfpga' with parent 'regmap' already present!
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+i2c 0-0039: deferred probe pending: sii902x: Failed to find remote bridge
+amba 1000f000.wdt: deferred probe pending: (reason unknown)
+amba 10020000.clcd: deferred probe pending: (reason unknown)
+amba 100e0000.memory-controller: deferred probe pending: (reason unknown)
+amba 100e1000.memory-controller: deferred probe pending: (reason unknown)
+amba 100e5000.watchdog: deferred probe pending: (reason unknown)
+Starting benchmark...
+Starting multi-scenario benchmark...
+
+-----------------------------------------------------
+Starting test scenario with 1 CPU children
+-----------------------------------------------------
+64 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+mychardev: loading out-of-tree module taints kernel.
+hrtimer: interrupt took 2524000 ns
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 11.669372
+TOTAL_WAIT_SUM: 85.765291
+TOTAL_WAIT_SUM: 61.379538
+TOTAL_WAIT_SUM: 48.344415
+TOTAL_WAIT_SUM: 57.676415
+TOTAL_WAIT_SUM: 33.358291
+TOTAL_WAIT_SUM: 94.470498
+TOTAL_WAIT_SUM: 70.326040
+TOTAL_WAIT_SUM: 93.676332
+TOTAL_WAIT_SUM: 60.169706
+TOTAL_WAIT_SUM: 58.235461
+TOTAL_WAIT_SUM: 63.691163
+TOTAL_WAIT_SUM: 64.192626
+TOTAL_WAIT_SUM: 63.311205
+TOTAL_WAIT_SUM: 58.586415
+TOTAL_WAIT_SUM: 64.332751
+TOTAL_WAIT_SUM: 60.387125
+TOTAL_WAIT_SUM: 68.706161
+TOTAL_WAIT_SUM: 58.284458
+TOTAL_WAIT_SUM: 56.413039
+TOTAL_WAIT_SUM: 66.162122
+TOTAL_WAIT_SUM: 79.271544
+TOTAL_WAIT_SUM: 71.903378
+TOTAL_WAIT_SUM: 62.015751
+TOTAL_WAIT_SUM: 46.272249
+TOTAL_WAIT_SUM: 61.530417
+TOTAL_WAIT_SUM: 76.445917
+TOTAL_WAIT_SUM: 48.136999
+TOTAL_WAIT_SUM: 52.335834
+TOTAL_WAIT_SUM: 57.891167
+TOTAL_WAIT_SUM: 52.501210
+TOTAL_WAIT_SUM: 57.293166
+TOTAL_WAIT_SUM: 64.486170
+TOTAL_WAIT_SUM: 52.654542
+TOTAL_WAIT_SUM: 52.917167
+TOTAL_WAIT_SUM: 72.718291
+TOTAL_WAIT_SUM: 49.430047
+TOTAL_WAIT_SUM: 57.455373
+TOTAL_WAIT_SUM: 50.269709
+TOTAL_WAIT_SUM: 66.451708
+TOTAL_WAIT_SUM: 55.331209
+TOTAL_WAIT_SUM: 55.263461
+TOTAL_WAIT_SUM: 49.428750
+TOTAL_WAIT_SUM: 55.599954
+TOTAL_WAIT_SUM: 58.662747
+TOTAL_WAIT_SUM: 52.681499
+TOTAL_WAIT_SUM: 65.860334
+TOTAL_WAIT_SUM: 62.645669
+TOTAL_WAIT_SUM: 55.900500
+TOTAL_WAIT_SUM: 49.030289
+TOTAL_WAIT_SUM: 62.326790
+TOTAL_WAIT_SUM: 37.125665
+TOTAL_WAIT_SUM: 56.491666
+TOTAL_WAIT_SUM: 52.055203
+TOTAL_WAIT_SUM: 58.372086
+TOTAL_WAIT_SUM: 52.708788
+TOTAL_WAIT_SUM: 63.655205
+TOTAL_WAIT_SUM: 66.592503
+TOTAL_WAIT_SUM: 63.961541
+TOTAL_WAIT_SUM: 54.126169
+TOTAL_WAIT_SUM: 65.349870
+TOTAL_WAIT_SUM: 65.921085
+TOTAL_WAIT_SUM: 76.571080
+TOTAL_WAIT_SUM: 138.694498
+TOTAL_WAIT_SUM: 141.098749
+TOTAL_WAIT_SUM: 145.498959
+TOTAL_WAIT_SUM: 46.189835
+TOTAL_WAIT_SUM: 136.143455
+TOTAL_WAIT_SUM: 155.568335
+TOTAL_WAIT_SUM: 148.789872
+TOTAL_WAIT_SUM: 121.312495
+TOTAL_WAIT_SUM: 63.566623
+TOTAL_WAIT_SUM: 49.413417
+TOTAL_WAIT_SUM: 75.314002
+TOTAL_WAIT_SUM: 82.282628
+TOTAL_WAIT_SUM: 136.843995
+TOTAL_WAIT_SUM: 99.593377
+TOTAL_WAIT_SUM: 73.527709
+TOTAL_WAIT_SUM: 158.702792
+TOTAL_WAIT_SUM: 61.127334
+TOTAL_WAIT_SUM: 68.838957
+TOTAL_WAIT_SUM: 57.081788
+TOTAL_WAIT_SUM: 66.316294
+TOTAL_WAIT_SUM: 42.086084
+TOTAL_WAIT_SUM: 95.440416
+TOTAL_WAIT_SUM: 59.452626
+TOTAL_WAIT_SUM: 60.271209
+TOTAL_WAIT_SUM: 40.175833
+TOTAL_WAIT_SUM: 62.905623
+TOTAL_WAIT_SUM: 53.675337
+TOTAL_WAIT_SUM: 80.115417
+TOTAL_WAIT_SUM: 111.758335
+TOTAL_WAIT_SUM: 48.237459
+TOTAL_WAIT_SUM: 107.256915
+TOTAL_WAIT_SUM: 66.279540
+TOTAL_WAIT_SUM: 52.892996
+TOTAL_WAIT_SUM: 74.821123
+TOTAL_WAIT_SUM: 62.914083
+TOTAL_WAIT_SUM: 37.774210
+TOTAL_WAIT_SUM: 60.617416
+AVERAGE_IO_TASK_WAIT_SUM_1_CHILDREN: 69.0936
+PID 64 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 2 CPU children
+-----------------------------------------------------
+371 372 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 515.798247
+TOTAL_WAIT_SUM: 457.749921
+TOTAL_WAIT_SUM: 341.565457
+TOTAL_WAIT_SUM: 341.979083
+TOTAL_WAIT_SUM: 380.985629
+TOTAL_WAIT_SUM: 354.763629
+TOTAL_WAIT_SUM: 427.023665
+TOTAL_WAIT_SUM: 507.198372
+TOTAL_WAIT_SUM: 614.514577
+TOTAL_WAIT_SUM: 500.385493
+TOTAL_WAIT_SUM: 326.821829
+TOTAL_WAIT_SUM: 530.673456
+TOTAL_WAIT_SUM: 477.865872
+TOTAL_WAIT_SUM: 481.823877
+TOTAL_WAIT_SUM: 393.013995
+TOTAL_WAIT_SUM: 310.367625
+TOTAL_WAIT_SUM: 456.906211
+TOTAL_WAIT_SUM: 514.352082
+TOTAL_WAIT_SUM: 417.602166
+TOTAL_WAIT_SUM: 409.249877
+TOTAL_WAIT_SUM: 497.252246
+TOTAL_WAIT_SUM: 291.186745
+TOTAL_WAIT_SUM: 551.798960
+TOTAL_WAIT_SUM: 471.740539
+TOTAL_WAIT_SUM: 498.059163
+TOTAL_WAIT_SUM: 352.397417
+TOTAL_WAIT_SUM: 400.246370
+TOTAL_WAIT_SUM: 479.245160
+TOTAL_WAIT_SUM: 496.467040
+TOTAL_WAIT_SUM: 397.542542
+TOTAL_WAIT_SUM: 382.415209
+TOTAL_WAIT_SUM: 482.326083
+TOTAL_WAIT_SUM: 402.014830
+TOTAL_WAIT_SUM: 382.257959
+TOTAL_WAIT_SUM: 371.460248
+TOTAL_WAIT_SUM: 325.657125
+TOTAL_WAIT_SUM: 562.673795
+TOTAL_WAIT_SUM: 398.913252
+TOTAL_WAIT_SUM: 495.383214
+TOTAL_WAIT_SUM: 346.553537
+TOTAL_WAIT_SUM: 415.509793
+TOTAL_WAIT_SUM: 320.854832
+TOTAL_WAIT_SUM: 418.298248
+TOTAL_WAIT_SUM: 444.812164
+TOTAL_WAIT_SUM: 410.579709
+TOTAL_WAIT_SUM: 441.382374
+TOTAL_WAIT_SUM: 428.555956
+TOTAL_WAIT_SUM: 476.295125
+TOTAL_WAIT_SUM: 397.392915
+TOTAL_WAIT_SUM: 489.685913
+TOTAL_WAIT_SUM: 463.274417
+TOTAL_WAIT_SUM: 435.193536
+TOTAL_WAIT_SUM: 400.718041
+TOTAL_WAIT_SUM: 421.985917
+TOTAL_WAIT_SUM: 404.989792
+TOTAL_WAIT_SUM: 485.696712
+TOTAL_WAIT_SUM: 432.632623
+TOTAL_WAIT_SUM: 447.102207
+TOTAL_WAIT_SUM: 432.959705
+TOTAL_WAIT_SUM: 400.056249
+TOTAL_WAIT_SUM: 358.711995
+TOTAL_WAIT_SUM: 364.984538
+TOTAL_WAIT_SUM: 476.296124
+TOTAL_WAIT_SUM: 375.820793
+TOTAL_WAIT_SUM: 540.093373
+TOTAL_WAIT_SUM: 436.184664
+TOTAL_WAIT_SUM: 387.744832
+TOTAL_WAIT_SUM: 429.782665
+TOTAL_WAIT_SUM: 471.145295
+TOTAL_WAIT_SUM: 450.208413
+TOTAL_WAIT_SUM: 345.847250
+TOTAL_WAIT_SUM: 514.939503
+TOTAL_WAIT_SUM: 458.592121
+TOTAL_WAIT_SUM: 346.863418
+TOTAL_WAIT_SUM: 385.325331
+TOTAL_WAIT_SUM: 400.394544
+TOTAL_WAIT_SUM: 385.779208
+TOTAL_WAIT_SUM: 373.960837
+TOTAL_WAIT_SUM: 433.594624
+TOTAL_WAIT_SUM: 465.861497
+TOTAL_WAIT_SUM: 326.194544
+TOTAL_WAIT_SUM: 506.361086
+TOTAL_WAIT_SUM: 408.237456
+TOTAL_WAIT_SUM: 393.723873
+TOTAL_WAIT_SUM: 413.178249
+TOTAL_WAIT_SUM: 372.935295
+TOTAL_WAIT_SUM: 328.454374
+TOTAL_WAIT_SUM: 406.259747
+TOTAL_WAIT_SUM: 491.523876
+TOTAL_WAIT_SUM: 387.524749
+TOTAL_WAIT_SUM: 375.314832
+TOTAL_WAIT_SUM: 453.072167
+TOTAL_WAIT_SUM: 447.229046
+TOTAL_WAIT_SUM: 405.919414
+TOTAL_WAIT_SUM: 351.767125
+TOTAL_WAIT_SUM: 347.801500
+TOTAL_WAIT_SUM: 142.606205
+TOTAL_WAIT_SUM: 412.552714
+TOTAL_WAIT_SUM: 375.921000
+TOTAL_WAIT_SUM: 331.055001
+AVERAGE_IO_TASK_WAIT_SUM_2_CHILDREN: 419.94
+PID 371 terminated.
+PID 372 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 3 CPU children
+-----------------------------------------------------
+679 680 681 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 797.753577
+TOTAL_WAIT_SUM: 804.095292
+TOTAL_WAIT_SUM: 873.832282
+TOTAL_WAIT_SUM: 770.286583
+TOTAL_WAIT_SUM: 792.943869
+TOTAL_WAIT_SUM: 882.013453
+TOTAL_WAIT_SUM: 785.491695
+TOTAL_WAIT_SUM: 774.549488
+TOTAL_WAIT_SUM: 760.681749
+TOTAL_WAIT_SUM: 745.272917
+TOTAL_WAIT_SUM: 570.342413
+TOTAL_WAIT_SUM: 746.898081
+TOTAL_WAIT_SUM: 781.025369
+TOTAL_WAIT_SUM: 917.944540
+TOTAL_WAIT_SUM: 872.332710
+TOTAL_WAIT_SUM: 922.030420
+TOTAL_WAIT_SUM: 606.880550
+TOTAL_WAIT_SUM: 710.533125
+TOTAL_WAIT_SUM: 850.247952
+TOTAL_WAIT_SUM: 793.012075
+TOTAL_WAIT_SUM: 766.857248
+TOTAL_WAIT_SUM: 896.878165
+TOTAL_WAIT_SUM: 784.788829
+TOTAL_WAIT_SUM: 738.355918
+TOTAL_WAIT_SUM: 668.360249
+TOTAL_WAIT_SUM: 827.203747
+TOTAL_WAIT_SUM: 925.783622
+TOTAL_WAIT_SUM: 673.185999
+TOTAL_WAIT_SUM: 827.266292
+TOTAL_WAIT_SUM: 741.219328
+TOTAL_WAIT_SUM: 924.651203
+TOTAL_WAIT_SUM: 920.405833
+TOTAL_WAIT_SUM: 750.951992
+TOTAL_WAIT_SUM: 612.981289
+TOTAL_WAIT_SUM: 836.299572
+TOTAL_WAIT_SUM: 644.133294
+TOTAL_WAIT_SUM: 654.486075
+TOTAL_WAIT_SUM: 713.306489
+TOTAL_WAIT_SUM: 651.583829
+TOTAL_WAIT_SUM: 785.112990
+TOTAL_WAIT_SUM: 741.069419
+TOTAL_WAIT_SUM: 690.310794
+TOTAL_WAIT_SUM: 783.140989
+TOTAL_WAIT_SUM: 656.903915
+TOTAL_WAIT_SUM: 620.248995
+TOTAL_WAIT_SUM: 509.640245
+TOTAL_WAIT_SUM: 811.163581
+TOTAL_WAIT_SUM: 647.977166
+TOTAL_WAIT_SUM: 641.188374
+TOTAL_WAIT_SUM: 535.158626
+TOTAL_WAIT_SUM: 738.726165
+TOTAL_WAIT_SUM: 769.274454
+TOTAL_WAIT_SUM: 717.086002
+TOTAL_WAIT_SUM: 571.202127
+TOTAL_WAIT_SUM: 617.848910
+TOTAL_WAIT_SUM: 745.644049
+TOTAL_WAIT_SUM: 662.379116
+TOTAL_WAIT_SUM: 655.743037
+TOTAL_WAIT_SUM: 709.288000
+TOTAL_WAIT_SUM: 676.304454
+TOTAL_WAIT_SUM: 441.988246
+TOTAL_WAIT_SUM: 731.253168
+TOTAL_WAIT_SUM: 733.878195
+TOTAL_WAIT_SUM: 731.501165
+TOTAL_WAIT_SUM: 670.869369
+TOTAL_WAIT_SUM: 731.332291
+TOTAL_WAIT_SUM: 731.212289
+TOTAL_WAIT_SUM: 822.493986
+TOTAL_WAIT_SUM: 786.171609
+TOTAL_WAIT_SUM: 590.050628
+TOTAL_WAIT_SUM: 560.930460
+TOTAL_WAIT_SUM: 759.524245
+TOTAL_WAIT_SUM: 687.222866
+TOTAL_WAIT_SUM: 732.519793
+TOTAL_WAIT_SUM: 792.345662
+TOTAL_WAIT_SUM: 707.413790
+TOTAL_WAIT_SUM: 808.044581
+TOTAL_WAIT_SUM: 616.231283
+TOTAL_WAIT_SUM: 666.326199
+TOTAL_WAIT_SUM: 744.242869
+TOTAL_WAIT_SUM: 681.229541
+TOTAL_WAIT_SUM: 799.860988
+TOTAL_WAIT_SUM: 776.736868
+TOTAL_WAIT_SUM: 741.823536
+TOTAL_WAIT_SUM: 659.031050
+TOTAL_WAIT_SUM: 835.770613
+TOTAL_WAIT_SUM: 766.159830
+TOTAL_WAIT_SUM: 762.654995
+TOTAL_WAIT_SUM: 702.605750
+TOTAL_WAIT_SUM: 730.139377
+TOTAL_WAIT_SUM: 668.423751
+TOTAL_WAIT_SUM: 725.762616
+TOTAL_WAIT_SUM: 761.444788
+TOTAL_WAIT_SUM: 639.838500
+TOTAL_WAIT_SUM: 683.178078
+TOTAL_WAIT_SUM: 707.107882
+TOTAL_WAIT_SUM: 557.877792
+TOTAL_WAIT_SUM: 775.588077
+TOTAL_WAIT_SUM: 747.435582
+TOTAL_WAIT_SUM: 747.014536
+AVERAGE_IO_TASK_WAIT_SUM_3_CHILDREN: 731.175
+PID 679 terminated.
+PID 680 terminated.
+PID 681 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 4 CPU children
+-----------------------------------------------------
+988 989 990 991 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1041.231042
+TOTAL_WAIT_SUM: 1171.348704
+TOTAL_WAIT_SUM: 1054.367920
+TOTAL_WAIT_SUM: 1043.371204
+TOTAL_WAIT_SUM: 969.312210
+TOTAL_WAIT_SUM: 929.636754
+TOTAL_WAIT_SUM: 1044.562995
+TOTAL_WAIT_SUM: 1035.125680
+TOTAL_WAIT_SUM: 1021.059002
+TOTAL_WAIT_SUM: 1037.568955
+TOTAL_WAIT_SUM: 803.361328
+TOTAL_WAIT_SUM: 1064.565956
+TOTAL_WAIT_SUM: 1004.449029
+TOTAL_WAIT_SUM: 983.756126
+TOTAL_WAIT_SUM: 1128.706667
+TOTAL_WAIT_SUM: 1052.353657
+TOTAL_WAIT_SUM: 1047.657535
+TOTAL_WAIT_SUM: 1080.833288
+TOTAL_WAIT_SUM: 1171.657833
+TOTAL_WAIT_SUM: 1174.793246
+TOTAL_WAIT_SUM: 961.589329
+TOTAL_WAIT_SUM: 1127.416045
+TOTAL_WAIT_SUM: 1228.960571
+TOTAL_WAIT_SUM: 1022.522114
+TOTAL_WAIT_SUM: 1036.490991
+TOTAL_WAIT_SUM: 1087.898865
+TOTAL_WAIT_SUM: 875.482823
+TOTAL_WAIT_SUM: 917.893361
+TOTAL_WAIT_SUM: 1037.388122
+TOTAL_WAIT_SUM: 884.006662
+TOTAL_WAIT_SUM: 777.932783
+TOTAL_WAIT_SUM: 1133.552166
+TOTAL_WAIT_SUM: 1218.307540
+TOTAL_WAIT_SUM: 999.096660
+TOTAL_WAIT_SUM: 1003.389114
+TOTAL_WAIT_SUM: 1052.183287
+TOTAL_WAIT_SUM: 1269.413028
+TOTAL_WAIT_SUM: 1085.865458
+TOTAL_WAIT_SUM: 1107.532588
+TOTAL_WAIT_SUM: 1267.030739
+TOTAL_WAIT_SUM: 1074.648829
+TOTAL_WAIT_SUM: 1255.353578
+TOTAL_WAIT_SUM: 1231.079537
+TOTAL_WAIT_SUM: 1076.833703
+TOTAL_WAIT_SUM: 1244.072929
+TOTAL_WAIT_SUM: 1205.375984
+TOTAL_WAIT_SUM: 998.316578
+TOTAL_WAIT_SUM: 1353.920947
+TOTAL_WAIT_SUM: 1209.448462
+TOTAL_WAIT_SUM: 1203.626485
+TOTAL_WAIT_SUM: 1209.086326
+TOTAL_WAIT_SUM: 1365.336901
+TOTAL_WAIT_SUM: 1098.986370
+TOTAL_WAIT_SUM: 1277.519572
+TOTAL_WAIT_SUM: 1007.677424
+TOTAL_WAIT_SUM: 1332.061494
+TOTAL_WAIT_SUM: 1277.199218
+TOTAL_WAIT_SUM: 1336.740850
+TOTAL_WAIT_SUM: 1144.079039
+TOTAL_WAIT_SUM: 1145.852036
+TOTAL_WAIT_SUM: 1235.198285
+TOTAL_WAIT_SUM: 1095.839947
+TOTAL_WAIT_SUM: 1291.299736
+TOTAL_WAIT_SUM: 1258.958988
+TOTAL_WAIT_SUM: 1341.835913
+TOTAL_WAIT_SUM: 1225.502774
+TOTAL_WAIT_SUM: 1070.274419
+TOTAL_WAIT_SUM: 1204.534655
+TOTAL_WAIT_SUM: 1121.160157
+TOTAL_WAIT_SUM: 1309.589702
+TOTAL_WAIT_SUM: 1248.127372
+TOTAL_WAIT_SUM: 1259.590287
+TOTAL_WAIT_SUM: 1091.791368
+TOTAL_WAIT_SUM: 1020.256874
+TOTAL_WAIT_SUM: 1383.932115
+TOTAL_WAIT_SUM: 1358.417489
+TOTAL_WAIT_SUM: 1345.693079
+TOTAL_WAIT_SUM: 1469.469044
+TOTAL_WAIT_SUM: 1349.713619
+TOTAL_WAIT_SUM: 1264.254950
+TOTAL_WAIT_SUM: 1099.667747
+TOTAL_WAIT_SUM: 1324.257783
+TOTAL_WAIT_SUM: 994.597415
+TOTAL_WAIT_SUM: 1379.461418
+TOTAL_WAIT_SUM: 1227.475214
+TOTAL_WAIT_SUM: 984.119963
+TOTAL_WAIT_SUM: 1355.798620
+TOTAL_WAIT_SUM: 1183.746667
+TOTAL_WAIT_SUM: 1281.673176
+TOTAL_WAIT_SUM: 1260.470416
+TOTAL_WAIT_SUM: 1277.694070
+TOTAL_WAIT_SUM: 1290.732954
+TOTAL_WAIT_SUM: 1105.228747
+TOTAL_WAIT_SUM: 1211.193154
+TOTAL_WAIT_SUM: 1190.076538
+TOTAL_WAIT_SUM: 1184.171241
+TOTAL_WAIT_SUM: 1213.061909
+TOTAL_WAIT_SUM: 1162.283575
+TOTAL_WAIT_SUM: 1186.129241
+TOTAL_WAIT_SUM: 1194.704072
+AVERAGE_IO_TASK_WAIT_SUM_4_CHILDREN: 1150.53
+PID 988 terminated.
+PID 989 terminated.
+PID 990 terminated.
+PID 991 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 5 CPU children
+-----------------------------------------------------
+1298 1299 1300 1301 1302 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1583.452382
+TOTAL_WAIT_SUM: 1532.490955
+TOTAL_WAIT_SUM: 1404.413919
+TOTAL_WAIT_SUM: 1645.465468
+TOTAL_WAIT_SUM: 1430.783293
+TOTAL_WAIT_SUM: 1485.927212
+TOTAL_WAIT_SUM: 1591.737578
+TOTAL_WAIT_SUM: 1139.492955
+TOTAL_WAIT_SUM: 1557.154913
+TOTAL_WAIT_SUM: 1558.909162
+TOTAL_WAIT_SUM: 1690.235122
+TOTAL_WAIT_SUM: 1374.939003
+TOTAL_WAIT_SUM: 1489.553056
+TOTAL_WAIT_SUM: 1502.779952
+TOTAL_WAIT_SUM: 1646.917648
+TOTAL_WAIT_SUM: 1612.583408
+TOTAL_WAIT_SUM: 1349.621329
+TOTAL_WAIT_SUM: 981.020207
+TOTAL_WAIT_SUM: 1599.694449
+TOTAL_WAIT_SUM: 1479.127538
+TOTAL_WAIT_SUM: 1402.412288
+TOTAL_WAIT_SUM: 1379.020364
+TOTAL_WAIT_SUM: 1395.373972
+TOTAL_WAIT_SUM: 1505.466954
+TOTAL_WAIT_SUM: 1350.519125
+TOTAL_WAIT_SUM: 1516.840413
+TOTAL_WAIT_SUM: 1394.203617
+TOTAL_WAIT_SUM: 1711.352332
+TOTAL_WAIT_SUM: 1470.941296
+TOTAL_WAIT_SUM: 1452.975204
+TOTAL_WAIT_SUM: 1429.715176
+TOTAL_WAIT_SUM: 1597.284912
+TOTAL_WAIT_SUM: 1493.370995
+TOTAL_WAIT_SUM: 1481.967502
+TOTAL_WAIT_SUM: 1576.440659
+TOTAL_WAIT_SUM: 1406.396167
+TOTAL_WAIT_SUM: 1582.769621
+TOTAL_WAIT_SUM: 1567.930830
+TOTAL_WAIT_SUM: 1406.288023
+TOTAL_WAIT_SUM: 1139.836955
+TOTAL_WAIT_SUM: 1441.760696
+TOTAL_WAIT_SUM: 1483.761002
+TOTAL_WAIT_SUM: 1426.423881
+TOTAL_WAIT_SUM: 1351.418529
+TOTAL_WAIT_SUM: 1421.264952
+TOTAL_WAIT_SUM: 1383.945735
+TOTAL_WAIT_SUM: 1118.141749
+TOTAL_WAIT_SUM: 1607.608667
+TOTAL_WAIT_SUM: 1309.259089
+TOTAL_WAIT_SUM: 1278.447586
+TOTAL_WAIT_SUM: 1336.419954
+TOTAL_WAIT_SUM: 1409.026274
+TOTAL_WAIT_SUM: 1230.804580
+TOTAL_WAIT_SUM: 1159.447499
+TOTAL_WAIT_SUM: 1281.230209
+TOTAL_WAIT_SUM: 1142.221658
+TOTAL_WAIT_SUM: 1522.160399
+TOTAL_WAIT_SUM: 1191.500282
+TOTAL_WAIT_SUM: 1214.306164
+TOTAL_WAIT_SUM: 1255.618234
+TOTAL_WAIT_SUM: 1235.136868
+TOTAL_WAIT_SUM: 1486.759162
+TOTAL_WAIT_SUM: 1381.336041
+TOTAL_WAIT_SUM: 1253.265873
+TOTAL_WAIT_SUM: 1413.040658
+TOTAL_WAIT_SUM: 1178.393988
+TOTAL_WAIT_SUM: 1414.474430
+TOTAL_WAIT_SUM: 1272.210507
+TOTAL_WAIT_SUM: 1307.988036
+TOTAL_WAIT_SUM: 1270.064462
+TOTAL_WAIT_SUM: 1192.971371
+TOTAL_WAIT_SUM: 1300.905450
+TOTAL_WAIT_SUM: 1218.358073
+TOTAL_WAIT_SUM: 1183.774404
+TOTAL_WAIT_SUM: 1168.296550
+TOTAL_WAIT_SUM: 1359.429293
+TOTAL_WAIT_SUM: 1120.682627
+TOTAL_WAIT_SUM: 1315.997234
+TOTAL_WAIT_SUM: 1359.601757
+TOTAL_WAIT_SUM: 1378.360978
+TOTAL_WAIT_SUM: 1191.435535
+TOTAL_WAIT_SUM: 917.667255
+TOTAL_WAIT_SUM: 1389.485411
+TOTAL_WAIT_SUM: 1088.747122
+TOTAL_WAIT_SUM: 1104.426289
+TOTAL_WAIT_SUM: 1284.972799
+TOTAL_WAIT_SUM: 1113.424823
+TOTAL_WAIT_SUM: 1267.973767
+TOTAL_WAIT_SUM: 1204.633813
+TOTAL_WAIT_SUM: 1320.874365
+TOTAL_WAIT_SUM: 1285.255000
+TOTAL_WAIT_SUM: 1336.303780
+TOTAL_WAIT_SUM: 1309.553570
+TOTAL_WAIT_SUM: 1110.355989
+TOTAL_WAIT_SUM: 1182.233210
+TOTAL_WAIT_SUM: 1278.382940
+TOTAL_WAIT_SUM: 1378.305907
+TOTAL_WAIT_SUM: 1020.226166
+TOTAL_WAIT_SUM: 1399.161695
+TOTAL_WAIT_SUM: 1214.436701
+AVERAGE_IO_TASK_WAIT_SUM_5_CHILDREN: 1356.91
+PID 1298 terminated.
+PID 1299 terminated.
+PID 1300 terminated.
+PID 1301 terminated.
+PID 1302 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 6 CPU children
+-----------------------------------------------------
+1609 1610 1611 1612 1613 1614 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1549.355747
+TOTAL_WAIT_SUM: 1474.659460
+TOTAL_WAIT_SUM: 1600.425413
+TOTAL_WAIT_SUM: 1576.688956
+TOTAL_WAIT_SUM: 1521.880127
+TOTAL_WAIT_SUM: 1552.726085
+TOTAL_WAIT_SUM: 1502.276237
+TOTAL_WAIT_SUM: 1457.404391
+TOTAL_WAIT_SUM: 1501.073132
+TOTAL_WAIT_SUM: 1515.796948
+TOTAL_WAIT_SUM: 1474.389071
+TOTAL_WAIT_SUM: 1523.960085
+TOTAL_WAIT_SUM: 1033.315367
+TOTAL_WAIT_SUM: 1347.673664
+TOTAL_WAIT_SUM: 1687.948150
+TOTAL_WAIT_SUM: 1640.579752
+TOTAL_WAIT_SUM: 1604.053657
+TOTAL_WAIT_SUM: 1259.377579
+TOTAL_WAIT_SUM: 1635.677283
+TOTAL_WAIT_SUM: 1462.674194
+TOTAL_WAIT_SUM: 1451.078571
+TOTAL_WAIT_SUM: 1604.045782
+TOTAL_WAIT_SUM: 1606.493041
+TOTAL_WAIT_SUM: 1382.857265
+TOTAL_WAIT_SUM: 1510.240360
+TOTAL_WAIT_SUM: 1491.799895
+TOTAL_WAIT_SUM: 1383.031140
+TOTAL_WAIT_SUM: 1543.119698
+TOTAL_WAIT_SUM: 1704.510030
+TOTAL_WAIT_SUM: 1478.832151
+TOTAL_WAIT_SUM: 1596.706906
+TOTAL_WAIT_SUM: 1602.363671
+TOTAL_WAIT_SUM: 1669.644664
+TOTAL_WAIT_SUM: 1563.577703
+TOTAL_WAIT_SUM: 1544.177208
+TOTAL_WAIT_SUM: 1530.988421
+TOTAL_WAIT_SUM: 1490.511362
+TOTAL_WAIT_SUM: 1427.980074
+TOTAL_WAIT_SUM: 1716.303621
+TOTAL_WAIT_SUM: 1460.611491
+TOTAL_WAIT_SUM: 1616.388829
+TOTAL_WAIT_SUM: 1699.910997
+TOTAL_WAIT_SUM: 1502.837936
+TOTAL_WAIT_SUM: 1480.149364
+TOTAL_WAIT_SUM: 1416.433619
+TOTAL_WAIT_SUM: 1701.263815
+TOTAL_WAIT_SUM: 1301.420589
+TOTAL_WAIT_SUM: 1581.205576
+TOTAL_WAIT_SUM: 1553.525543
+TOTAL_WAIT_SUM: 1482.296564
+TOTAL_WAIT_SUM: 1501.853455
+TOTAL_WAIT_SUM: 1257.813937
+TOTAL_WAIT_SUM: 1647.891392
+TOTAL_WAIT_SUM: 1551.207625
+TOTAL_WAIT_SUM: 1518.123714
+TOTAL_WAIT_SUM: 932.756491
+TOTAL_WAIT_SUM: 1695.982820
+TOTAL_WAIT_SUM: 1472.175273
+TOTAL_WAIT_SUM: 1330.593915
+TOTAL_WAIT_SUM: 1794.892692
+TOTAL_WAIT_SUM: 1452.447604
+TOTAL_WAIT_SUM: 1619.103616
+TOTAL_WAIT_SUM: 1654.787008
+TOTAL_WAIT_SUM: 1882.519170
+TOTAL_WAIT_SUM: 1559.383993
+TOTAL_WAIT_SUM: 1844.524318
+TOTAL_WAIT_SUM: 1522.293954
+TOTAL_WAIT_SUM: 1443.216551
+TOTAL_WAIT_SUM: 1622.799999
+TOTAL_WAIT_SUM: 1855.168921
+TOTAL_WAIT_SUM: 1311.615301
+TOTAL_WAIT_SUM: 1769.272242
+TOTAL_WAIT_SUM: 1770.856734
+TOTAL_WAIT_SUM: 1757.012233
+TOTAL_WAIT_SUM: 1570.704629
+TOTAL_WAIT_SUM: 1970.503988
+TOTAL_WAIT_SUM: 1210.693339
+TOTAL_WAIT_SUM: 1541.036457
+TOTAL_WAIT_SUM: 1678.243384
+TOTAL_WAIT_SUM: 1891.306996
+TOTAL_WAIT_SUM: 2038.721322
+TOTAL_WAIT_SUM: 1730.756565
+TOTAL_WAIT_SUM: 1558.745009
+TOTAL_WAIT_SUM: 1867.417972
+TOTAL_WAIT_SUM: 1787.797492
+TOTAL_WAIT_SUM: 1562.860174
+TOTAL_WAIT_SUM: 1188.342122
+TOTAL_WAIT_SUM: 1787.198094
+TOTAL_WAIT_SUM: 1915.803525
+TOTAL_WAIT_SUM: 1582.346149
+TOTAL_WAIT_SUM: 1688.708613
+TOTAL_WAIT_SUM: 1760.365239
+TOTAL_WAIT_SUM: 1489.464745
+TOTAL_WAIT_SUM: 1791.607735
+TOTAL_WAIT_SUM: 1903.242320
+TOTAL_WAIT_SUM: 1907.937083
+TOTAL_WAIT_SUM: 2015.662072
+TOTAL_WAIT_SUM: 1910.976550
+TOTAL_WAIT_SUM: 1635.205415
+TOTAL_WAIT_SUM: 1921.229227
+AVERAGE_IO_TASK_WAIT_SUM_6_CHILDREN: 1586.91
+PID 1609 terminated.
+PID 1610 terminated.
+PID 1611 terminated.
+PID 1612 terminated.
+PID 1613 terminated.
+PID 1614 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 7 CPU children
+-----------------------------------------------------
+1921 1922 1923 1924 1925 1926 1927 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1745.879492
+TOTAL_WAIT_SUM: 2115.461678
+TOTAL_WAIT_SUM: 1810.182795
+TOTAL_WAIT_SUM: 2048.711311
+TOTAL_WAIT_SUM: 1786.833956
+TOTAL_WAIT_SUM: 1917.079854
+TOTAL_WAIT_SUM: 2173.389472
+TOTAL_WAIT_SUM: 2019.946931
+TOTAL_WAIT_SUM: 1958.166954
+TOTAL_WAIT_SUM: 2050.361288
+TOTAL_WAIT_SUM: 1666.490767
+TOTAL_WAIT_SUM: 1639.507663
+TOTAL_WAIT_SUM: 2094.771723
+TOTAL_WAIT_SUM: 1946.111664
+TOTAL_WAIT_SUM: 1525.735200
+TOTAL_WAIT_SUM: 2080.238583
+TOTAL_WAIT_SUM: 1787.208939
+TOTAL_WAIT_SUM: 1590.872765
+TOTAL_WAIT_SUM: 2023.355901
+TOTAL_WAIT_SUM: 1976.875430
+TOTAL_WAIT_SUM: 1723.848578
+TOTAL_WAIT_SUM: 1913.574602
+TOTAL_WAIT_SUM: 1655.487710
+TOTAL_WAIT_SUM: 1783.016097
+TOTAL_WAIT_SUM: 2131.317451
+TOTAL_WAIT_SUM: 1873.095712
+TOTAL_WAIT_SUM: 1867.687958
+TOTAL_WAIT_SUM: 1867.757607
+TOTAL_WAIT_SUM: 1766.264282
+TOTAL_WAIT_SUM: 2169.658361
+TOTAL_WAIT_SUM: 1608.970779
+TOTAL_WAIT_SUM: 1876.223237
+TOTAL_WAIT_SUM: 1285.254248
+TOTAL_WAIT_SUM: 1620.535565
+TOTAL_WAIT_SUM: 1827.011672
+TOTAL_WAIT_SUM: 1785.036297
+TOTAL_WAIT_SUM: 1900.631417
+TOTAL_WAIT_SUM: 1596.402875
+TOTAL_WAIT_SUM: 1812.743866
+TOTAL_WAIT_SUM: 1879.922342
+TOTAL_WAIT_SUM: 1842.829164
+TOTAL_WAIT_SUM: 1745.262999
+TOTAL_WAIT_SUM: 1434.745379
+TOTAL_WAIT_SUM: 1537.723483
+TOTAL_WAIT_SUM: 1638.855236
+TOTAL_WAIT_SUM: 1756.944688
+TOTAL_WAIT_SUM: 1640.629278
+TOTAL_WAIT_SUM: 1949.310110
+TOTAL_WAIT_SUM: 1702.671585
+TOTAL_WAIT_SUM: 1541.901202
+TOTAL_WAIT_SUM: 1701.919364
+TOTAL_WAIT_SUM: 1632.175289
+TOTAL_WAIT_SUM: 1562.482340
+TOTAL_WAIT_SUM: 1779.992779
+TOTAL_WAIT_SUM: 1514.440444
+TOTAL_WAIT_SUM: 1840.430051
+TOTAL_WAIT_SUM: 2043.326588
+TOTAL_WAIT_SUM: 1728.304030
+TOTAL_WAIT_SUM: 1591.559654
+TOTAL_WAIT_SUM: 1691.369113
+TOTAL_WAIT_SUM: 1484.684408
+TOTAL_WAIT_SUM: 1335.143076
+TOTAL_WAIT_SUM: 1904.275026
+TOTAL_WAIT_SUM: 1340.455622
+TOTAL_WAIT_SUM: 1660.208932
+TOTAL_WAIT_SUM: 1578.672619
+TOTAL_WAIT_SUM: 1409.266289
+TOTAL_WAIT_SUM: 1544.874839
+TOTAL_WAIT_SUM: 1562.964454
+TOTAL_WAIT_SUM: 1505.826257
+TOTAL_WAIT_SUM: 1414.911580
+TOTAL_WAIT_SUM: 1628.672860
+TOTAL_WAIT_SUM: 1448.056090
+TOTAL_WAIT_SUM: 1706.672282
+TOTAL_WAIT_SUM: 1674.358867
+TOTAL_WAIT_SUM: 1617.739193
+TOTAL_WAIT_SUM: 1842.641684
+TOTAL_WAIT_SUM: 1589.233650
+TOTAL_WAIT_SUM: 1440.151582
+TOTAL_WAIT_SUM: 1928.584961
+TOTAL_WAIT_SUM: 1511.856603
+TOTAL_WAIT_SUM: 1176.926550
+TOTAL_WAIT_SUM: 1539.583903
+TOTAL_WAIT_SUM: 1759.330948
+TOTAL_WAIT_SUM: 1632.509575
+TOTAL_WAIT_SUM: 1459.036911
+TOTAL_WAIT_SUM: 1436.338929
+TOTAL_WAIT_SUM: 1759.306909
+TOTAL_WAIT_SUM: 1714.126189
+TOTAL_WAIT_SUM: 1716.667233
+TOTAL_WAIT_SUM: 1673.554205
+TOTAL_WAIT_SUM: 1627.422981
+TOTAL_WAIT_SUM: 1593.871250
+TOTAL_WAIT_SUM: 1721.374118
+TOTAL_WAIT_SUM: 1591.912277
+TOTAL_WAIT_SUM: 1648.134364
+TOTAL_WAIT_SUM: 1618.468542
+TOTAL_WAIT_SUM: 1372.092192
+TOTAL_WAIT_SUM: 1424.100058
+TOTAL_WAIT_SUM: 1520.640993
+AVERAGE_IO_TASK_WAIT_SUM_7_CHILDREN: 1708.93
+PID 1921 terminated.
+PID 1922 terminated.
+PID 1923 terminated.
+PID 1924 terminated.
+PID 1925 terminated.
+PID 1926 terminated.
+PID 1927 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 8 CPU children
+-----------------------------------------------------
+2234 2235 2236 2237 2238 2239 2240 2241 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1785.624622
+TOTAL_WAIT_SUM: 1806.202313
+TOTAL_WAIT_SUM: 1899.394620
+TOTAL_WAIT_SUM: 1876.934218
+TOTAL_WAIT_SUM: 1735.161206
+TOTAL_WAIT_SUM: 1840.921208
+TOTAL_WAIT_SUM: 1683.507209
+TOTAL_WAIT_SUM: 1711.951935
+TOTAL_WAIT_SUM: 1374.608411
+TOTAL_WAIT_SUM: 1565.210662
+TOTAL_WAIT_SUM: 1120.216082
+TOTAL_WAIT_SUM: 1257.225755
+TOTAL_WAIT_SUM: 1546.184064
+TOTAL_WAIT_SUM: 1679.448417
+TOTAL_WAIT_SUM: 1683.599368
+TOTAL_WAIT_SUM: 1476.191496
+TOTAL_WAIT_SUM: 1779.528487
+TOTAL_WAIT_SUM: 1679.936754
+TOTAL_WAIT_SUM: 1831.632936
+TOTAL_WAIT_SUM: 1732.004597
+TOTAL_WAIT_SUM: 1768.243868
+TOTAL_WAIT_SUM: 1829.314361
+TOTAL_WAIT_SUM: 1926.146926
+TOTAL_WAIT_SUM: 1685.465034
+TOTAL_WAIT_SUM: 1855.897785
+TOTAL_WAIT_SUM: 1679.440652
+TOTAL_WAIT_SUM: 1909.711582
+TOTAL_WAIT_SUM: 1773.613329
+TOTAL_WAIT_SUM: 1885.243665
+TOTAL_WAIT_SUM: 1814.717624
+TOTAL_WAIT_SUM: 1874.986919
+TOTAL_WAIT_SUM: 1759.349118
+TOTAL_WAIT_SUM: 1494.198964
+TOTAL_WAIT_SUM: 1682.253951
+TOTAL_WAIT_SUM: 1849.380850
+TOTAL_WAIT_SUM: 1707.750038
+TOTAL_WAIT_SUM: 1848.694086
+TOTAL_WAIT_SUM: 1584.068578
+TOTAL_WAIT_SUM: 1692.774854
+TOTAL_WAIT_SUM: 1809.743293
+TOTAL_WAIT_SUM: 1882.023888
+TOTAL_WAIT_SUM: 1733.659790
+TOTAL_WAIT_SUM: 1915.296318
+TOTAL_WAIT_SUM: 1781.354254
+TOTAL_WAIT_SUM: 1595.124495
+TOTAL_WAIT_SUM: 1590.978960
+TOTAL_WAIT_SUM: 1676.525713
+TOTAL_WAIT_SUM: 1738.091140
+TOTAL_WAIT_SUM: 1539.686566
+TOTAL_WAIT_SUM: 1694.371300
+TOTAL_WAIT_SUM: 1332.793751
+TOTAL_WAIT_SUM: 1642.072914
+TOTAL_WAIT_SUM: 1754.287316
+TOTAL_WAIT_SUM: 1945.929960
+TOTAL_WAIT_SUM: 1837.059230
+TOTAL_WAIT_SUM: 1871.907080
+TOTAL_WAIT_SUM: 1497.039906
+TOTAL_WAIT_SUM: 1707.560916
+TOTAL_WAIT_SUM: 1839.648041
+TOTAL_WAIT_SUM: 2042.376640
+TOTAL_WAIT_SUM: 1773.846615
+TOTAL_WAIT_SUM: 1985.275574
+TOTAL_WAIT_SUM: 1773.288457
+TOTAL_WAIT_SUM: 1648.118914
+TOTAL_WAIT_SUM: 1840.411496
+TOTAL_WAIT_SUM: 1605.447249
+TOTAL_WAIT_SUM: 2061.728150
+TOTAL_WAIT_SUM: 1415.966750
+TOTAL_WAIT_SUM: 1856.037069
+TOTAL_WAIT_SUM: 2134.603019
+TOTAL_WAIT_SUM: 1931.684845
+TOTAL_WAIT_SUM: 1968.630136
+TOTAL_WAIT_SUM: 1677.210062
+TOTAL_WAIT_SUM: 2090.339273
+TOTAL_WAIT_SUM: 1881.572891
+TOTAL_WAIT_SUM: 1794.186191
+TOTAL_WAIT_SUM: 1733.698995
+TOTAL_WAIT_SUM: 1894.198492
+TOTAL_WAIT_SUM: 2070.912685
+TOTAL_WAIT_SUM: 1768.365563
+TOTAL_WAIT_SUM: 1899.154947
+TOTAL_WAIT_SUM: 1646.698629
+TOTAL_WAIT_SUM: 1594.774334
+TOTAL_WAIT_SUM: 1577.863906
+TOTAL_WAIT_SUM: 1667.566049
+TOTAL_WAIT_SUM: 1605.280498
+TOTAL_WAIT_SUM: 1901.935461
+TOTAL_WAIT_SUM: 2038.106546
+TOTAL_WAIT_SUM: 1959.550326
+TOTAL_WAIT_SUM: 1838.231005
+TOTAL_WAIT_SUM: 1938.622272
+TOTAL_WAIT_SUM: 1888.441472
+TOTAL_WAIT_SUM: 2207.720448
+TOTAL_WAIT_SUM: 2148.458351
+TOTAL_WAIT_SUM: 2167.929325
+TOTAL_WAIT_SUM: 1990.926149
+TOTAL_WAIT_SUM: 1973.972344
+TOTAL_WAIT_SUM: 1974.544871
+TOTAL_WAIT_SUM: 2126.571463
+TOTAL_WAIT_SUM: 2160.207606
+AVERAGE_IO_TASK_WAIT_SUM_8_CHILDREN: 1783.26
+PID 2234 terminated.
+PID 2235 terminated.
+PID 2236 terminated.
+PID 2237 terminated.
+PID 2238 terminated.
+PID 2239 terminated.
+PID 2240 terminated.
+PID 2241 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 9 CPU children
+-----------------------------------------------------
+2548 2549 2550 2551 2552 2553 2554 2555 2556 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1795.142049
+TOTAL_WAIT_SUM: 1964.472634
+TOTAL_WAIT_SUM: 2302.831383
+TOTAL_WAIT_SUM: 2284.936816
+TOTAL_WAIT_SUM: 2092.621583
+TOTAL_WAIT_SUM: 2117.640746
+TOTAL_WAIT_SUM: 2196.463995
+TOTAL_WAIT_SUM: 2008.306577
+TOTAL_WAIT_SUM: 1962.068523
+TOTAL_WAIT_SUM: 1749.851001
+TOTAL_WAIT_SUM: 1771.629582
+TOTAL_WAIT_SUM: 2238.284963
+TOTAL_WAIT_SUM: 2274.757803
+TOTAL_WAIT_SUM: 2131.306403
+TOTAL_WAIT_SUM: 2283.721147
+TOTAL_WAIT_SUM: 2022.440361
+TOTAL_WAIT_SUM: 2222.762973
+TOTAL_WAIT_SUM: 2222.730029
+TOTAL_WAIT_SUM: 2158.114705
+TOTAL_WAIT_SUM: 2150.612507
+TOTAL_WAIT_SUM: 2178.341787
+TOTAL_WAIT_SUM: 2050.422716
+TOTAL_WAIT_SUM: 2022.858710
+TOTAL_WAIT_SUM: 2162.698235
+TOTAL_WAIT_SUM: 2128.213735
+TOTAL_WAIT_SUM: 1845.499012
+TOTAL_WAIT_SUM: 1941.375278
+TOTAL_WAIT_SUM: 2128.475598
+TOTAL_WAIT_SUM: 2087.312733
+TOTAL_WAIT_SUM: 2140.806464
+TOTAL_WAIT_SUM: 2453.139672
+TOTAL_WAIT_SUM: 2054.734793
+TOTAL_WAIT_SUM: 2156.136053
+TOTAL_WAIT_SUM: 2441.214604
+TOTAL_WAIT_SUM: 2072.248202
+TOTAL_WAIT_SUM: 1992.648494
+TOTAL_WAIT_SUM: 2008.358256
+TOTAL_WAIT_SUM: 1907.559752
+TOTAL_WAIT_SUM: 2444.341087
+TOTAL_WAIT_SUM: 1914.178913
+TOTAL_WAIT_SUM: 2081.661105
+TOTAL_WAIT_SUM: 2049.102861
+TOTAL_WAIT_SUM: 2161.787720
+TOTAL_WAIT_SUM: 2324.984598
+TOTAL_WAIT_SUM: 2544.517157
+TOTAL_WAIT_SUM: 2205.692932
+TOTAL_WAIT_SUM: 2064.293455
+TOTAL_WAIT_SUM: 2056.373743
+TOTAL_WAIT_SUM: 1938.986656
+TOTAL_WAIT_SUM: 1922.994278
+TOTAL_WAIT_SUM: 2152.683768
+TOTAL_WAIT_SUM: 1929.755300
+TOTAL_WAIT_SUM: 2146.769996
+TOTAL_WAIT_SUM: 2300.719526
+TOTAL_WAIT_SUM: 2106.704828
+TOTAL_WAIT_SUM: 1852.625912
+TOTAL_WAIT_SUM: 1667.059265
+TOTAL_WAIT_SUM: 1878.368036
+TOTAL_WAIT_SUM: 1376.122284
+TOTAL_WAIT_SUM: 2202.439407
+TOTAL_WAIT_SUM: 1717.174440
+TOTAL_WAIT_SUM: 1745.781759
+TOTAL_WAIT_SUM: 2246.037214
+TOTAL_WAIT_SUM: 1521.346859
+TOTAL_WAIT_SUM: 1873.655288
+TOTAL_WAIT_SUM: 1947.033315
+TOTAL_WAIT_SUM: 2143.268278
+TOTAL_WAIT_SUM: 1970.647120
+TOTAL_WAIT_SUM: 1975.402476
+TOTAL_WAIT_SUM: 2350.137658
+TOTAL_WAIT_SUM: 2259.419242
+TOTAL_WAIT_SUM: 2141.566810
+TOTAL_WAIT_SUM: 2283.037898
+TOTAL_WAIT_SUM: 2002.305173
+TOTAL_WAIT_SUM: 2003.591366
+TOTAL_WAIT_SUM: 2024.946518
+TOTAL_WAIT_SUM: 2168.497597
+TOTAL_WAIT_SUM: 2131.038144
+TOTAL_WAIT_SUM: 1971.556806
+TOTAL_WAIT_SUM: 2294.602490
+TOTAL_WAIT_SUM: 2028.498583
+TOTAL_WAIT_SUM: 2012.095935
+TOTAL_WAIT_SUM: 2003.888092
+TOTAL_WAIT_SUM: 1753.968434
+TOTAL_WAIT_SUM: 1824.596518
+TOTAL_WAIT_SUM: 1576.926956
+TOTAL_WAIT_SUM: 2402.745118
+TOTAL_WAIT_SUM: 1717.409955
+TOTAL_WAIT_SUM: 1715.257326
+TOTAL_WAIT_SUM: 1577.580882
+TOTAL_WAIT_SUM: 1931.750445
+TOTAL_WAIT_SUM: 1812.847865
+TOTAL_WAIT_SUM: 1747.760468
+TOTAL_WAIT_SUM: 1912.720870
+TOTAL_WAIT_SUM: 2048.639026
+TOTAL_WAIT_SUM: 1787.787912
+TOTAL_WAIT_SUM: 1870.402279
+TOTAL_WAIT_SUM: 2016.220188
+TOTAL_WAIT_SUM: 2026.635608
+TOTAL_WAIT_SUM: 1839.133459
+AVERAGE_IO_TASK_WAIT_SUM_9_CHILDREN: 2034.23
+PID 2548 terminated.
+PID 2549 terminated.
+PID 2550 terminated.
+PID 2551 terminated.
+PID 2552 terminated.
+PID 2553 terminated.
+PID 2554 terminated.
+PID 2555 terminated.
+PID 2556 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 10 CPU children
+-----------------------------------------------------
+2864 2865 2866 2867 2868 2869 2870 2871 2872 2873 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1836.841490
+TOTAL_WAIT_SUM: 1347.343704
+TOTAL_WAIT_SUM: 2124.875779
+TOTAL_WAIT_SUM: 1613.190992
+TOTAL_WAIT_SUM: 1678.613003
+TOTAL_WAIT_SUM: 1783.273074
+TOTAL_WAIT_SUM: 1737.708166
+TOTAL_WAIT_SUM: 2157.646822
+TOTAL_WAIT_SUM: 1791.261814
+TOTAL_WAIT_SUM: 1647.889412
+TOTAL_WAIT_SUM: 1713.869575
+TOTAL_WAIT_SUM: 1912.872237
+TOTAL_WAIT_SUM: 1850.070232
+TOTAL_WAIT_SUM: 1896.177170
+TOTAL_WAIT_SUM: 1603.095609
+TOTAL_WAIT_SUM: 1790.353105
+TOTAL_WAIT_SUM: 2003.480145
+TOTAL_WAIT_SUM: 1792.638912
+TOTAL_WAIT_SUM: 1796.913713
+TOTAL_WAIT_SUM: 1698.323025
+TOTAL_WAIT_SUM: 1436.543243
+TOTAL_WAIT_SUM: 1636.520503
+TOTAL_WAIT_SUM: 1954.398672
+TOTAL_WAIT_SUM: 1793.893911
+TOTAL_WAIT_SUM: 1904.056171
+TOTAL_WAIT_SUM: 1770.269632
+TOTAL_WAIT_SUM: 1470.977682
+TOTAL_WAIT_SUM: 1862.522195
+TOTAL_WAIT_SUM: 1943.751360
+TOTAL_WAIT_SUM: 1813.155990
+TOTAL_WAIT_SUM: 1688.148076
+TOTAL_WAIT_SUM: 1884.614394
+TOTAL_WAIT_SUM: 1818.619564
+TOTAL_WAIT_SUM: 1819.719157
+TOTAL_WAIT_SUM: 2151.932479
+TOTAL_WAIT_SUM: 1586.787910
+TOTAL_WAIT_SUM: 1042.201209
+TOTAL_WAIT_SUM: 1963.921271
+TOTAL_WAIT_SUM: 1833.754408
+TOTAL_WAIT_SUM: 1566.186606
+TOTAL_WAIT_SUM: 1245.617477
+TOTAL_WAIT_SUM: 1779.713037
+TOTAL_WAIT_SUM: 1767.291567
+TOTAL_WAIT_SUM: 1877.973659
+TOTAL_WAIT_SUM: 1608.872394
+TOTAL_WAIT_SUM: 1549.543016
+TOTAL_WAIT_SUM: 1889.395500
+TOTAL_WAIT_SUM: 1679.761966
+TOTAL_WAIT_SUM: 1874.525918
+TOTAL_WAIT_SUM: 1590.784144
+TOTAL_WAIT_SUM: 1739.621059
+TOTAL_WAIT_SUM: 1764.811955
+TOTAL_WAIT_SUM: 1624.245298
+TOTAL_WAIT_SUM: 1772.245813
+TOTAL_WAIT_SUM: 1489.645185
+TOTAL_WAIT_SUM: 1780.630684
+TOTAL_WAIT_SUM: 1692.644907
+TOTAL_WAIT_SUM: 1702.135042
+TOTAL_WAIT_SUM: 1741.802919
+TOTAL_WAIT_SUM: 1881.036300
+TOTAL_WAIT_SUM: 1813.424763
+TOTAL_WAIT_SUM: 1820.641268
+TOTAL_WAIT_SUM: 2142.463732
+TOTAL_WAIT_SUM: 1893.197253
+TOTAL_WAIT_SUM: 1756.739091
+TOTAL_WAIT_SUM: 1813.958951
+TOTAL_WAIT_SUM: 1632.609292
+TOTAL_WAIT_SUM: 1737.275528
+TOTAL_WAIT_SUM: 1839.243647
+TOTAL_WAIT_SUM: 1847.395441
+TOTAL_WAIT_SUM: 1493.782205
+TOTAL_WAIT_SUM: 1753.775900
+TOTAL_WAIT_SUM: 1855.581683
+TOTAL_WAIT_SUM: 1633.363372
+TOTAL_WAIT_SUM: 1727.880831
+TOTAL_WAIT_SUM: 1731.077504
+TOTAL_WAIT_SUM: 1782.319955
+TOTAL_WAIT_SUM: 1898.195004
+TOTAL_WAIT_SUM: 1899.008913
+TOTAL_WAIT_SUM: 2141.780905
+TOTAL_WAIT_SUM: 2025.201606
+TOTAL_WAIT_SUM: 1682.056736
+TOTAL_WAIT_SUM: 2134.103515
+TOTAL_WAIT_SUM: 1817.185537
+TOTAL_WAIT_SUM: 1631.622694
+TOTAL_WAIT_SUM: 2011.624692
+TOTAL_WAIT_SUM: 1939.693053
+TOTAL_WAIT_SUM: 2069.782978
+TOTAL_WAIT_SUM: 1716.440822
+TOTAL_WAIT_SUM: 1934.821213
+TOTAL_WAIT_SUM: 1753.694705
+TOTAL_WAIT_SUM: 1602.455396
+TOTAL_WAIT_SUM: 1902.286170
+TOTAL_WAIT_SUM: 1816.884953
+TOTAL_WAIT_SUM: 2114.502698
+TOTAL_WAIT_SUM: 2121.684174
+TOTAL_WAIT_SUM: 1942.895825
+TOTAL_WAIT_SUM: 1998.386416
+TOTAL_WAIT_SUM: 2000.713306
+TOTAL_WAIT_SUM: 2091.332024
+AVERAGE_IO_TASK_WAIT_SUM_10_CHILDREN: 1792.92
+PID 2864 terminated.
+PID 2865 terminated.
+PID 2866 terminated.
+PID 2867 terminated.
+PID 2868 terminated.
+PID 2869 terminated.
+PID 2870 terminated.
+PID 2871 terminated.
+PID 2872 terminated.
+PID 2873 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 11 CPU children
+-----------------------------------------------------
+3180 3181 3182 3183 3184 3185 3186 3187 3188 3189 3190 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 1863.492603
+TOTAL_WAIT_SUM: 1860.281444
+TOTAL_WAIT_SUM: 2099.819216
+TOTAL_WAIT_SUM: 1725.224370
+TOTAL_WAIT_SUM: 1910.683502
+TOTAL_WAIT_SUM: 1664.549143
+TOTAL_WAIT_SUM: 2034.491708
+TOTAL_WAIT_SUM: 1939.225496
+TOTAL_WAIT_SUM: 1704.281389
+TOTAL_WAIT_SUM: 1707.264325
+TOTAL_WAIT_SUM: 1977.023756
+TOTAL_WAIT_SUM: 1960.385991
+TOTAL_WAIT_SUM: 2016.482452
+TOTAL_WAIT_SUM: 1878.794020
+TOTAL_WAIT_SUM: 1633.536069
+TOTAL_WAIT_SUM: 2097.484677
+TOTAL_WAIT_SUM: 1384.621530
+TOTAL_WAIT_SUM: 1771.222567
+TOTAL_WAIT_SUM: 2127.099209
+TOTAL_WAIT_SUM: 2136.782434
+TOTAL_WAIT_SUM: 2117.667003
+TOTAL_WAIT_SUM: 1871.686053
+TOTAL_WAIT_SUM: 2243.164506
+TOTAL_WAIT_SUM: 2163.812380
+TOTAL_WAIT_SUM: 2117.356406
+TOTAL_WAIT_SUM: 2144.557420
+TOTAL_WAIT_SUM: 1980.223441
+TOTAL_WAIT_SUM: 2159.396944
+TOTAL_WAIT_SUM: 2056.471283
+TOTAL_WAIT_SUM: 2156.218693
+TOTAL_WAIT_SUM: 1961.816777
+TOTAL_WAIT_SUM: 2009.473351
+TOTAL_WAIT_SUM: 2026.892390
+TOTAL_WAIT_SUM: 1947.838621
+TOTAL_WAIT_SUM: 2037.477153
+TOTAL_WAIT_SUM: 2154.359266
+TOTAL_WAIT_SUM: 1868.775396
+TOTAL_WAIT_SUM: 2237.248351
+TOTAL_WAIT_SUM: 1483.933284
+TOTAL_WAIT_SUM: 2147.291981
+TOTAL_WAIT_SUM: 2065.383080
+TOTAL_WAIT_SUM: 2163.213146
+TOTAL_WAIT_SUM: 2204.349908
+TOTAL_WAIT_SUM: 2274.610876
+TOTAL_WAIT_SUM: 2158.280603
+TOTAL_WAIT_SUM: 2177.619586
+TOTAL_WAIT_SUM: 1888.794519
+TOTAL_WAIT_SUM: 1878.140812
+TOTAL_WAIT_SUM: 2142.413564
+TOTAL_WAIT_SUM: 2348.805293
+TOTAL_WAIT_SUM: 1966.421499
+TOTAL_WAIT_SUM: 2269.785269
+TOTAL_WAIT_SUM: 2321.891386
+TOTAL_WAIT_SUM: 2152.271668
+TOTAL_WAIT_SUM: 2136.584415
+TOTAL_WAIT_SUM: 1775.150359
+TOTAL_WAIT_SUM: 1909.932585
+TOTAL_WAIT_SUM: 2265.705167
+TOTAL_WAIT_SUM: 1564.691634
+TOTAL_WAIT_SUM: 2337.208246
+TOTAL_WAIT_SUM: 1959.888746
+TOTAL_WAIT_SUM: 2183.789374
+TOTAL_WAIT_SUM: 2233.955262
+TOTAL_WAIT_SUM: 1894.644964
+TOTAL_WAIT_SUM: 2123.217607
+TOTAL_WAIT_SUM: 1942.340788
+TOTAL_WAIT_SUM: 1632.433130
+TOTAL_WAIT_SUM: 2238.606191
+TOTAL_WAIT_SUM: 1845.332699
+TOTAL_WAIT_SUM: 2050.783116
+TOTAL_WAIT_SUM: 1892.873662
+TOTAL_WAIT_SUM: 2109.968969
+TOTAL_WAIT_SUM: 2007.181690
+TOTAL_WAIT_SUM: 2056.499782
+TOTAL_WAIT_SUM: 2003.723472
+TOTAL_WAIT_SUM: 2039.560116
+TOTAL_WAIT_SUM: 1410.328482
+TOTAL_WAIT_SUM: 1884.100617
+TOTAL_WAIT_SUM: 2136.666902
+TOTAL_WAIT_SUM: 1741.133959
+TOTAL_WAIT_SUM: 1885.739640
+TOTAL_WAIT_SUM: 2114.917929
+TOTAL_WAIT_SUM: 1558.882701
+TOTAL_WAIT_SUM: 2184.039262
+TOTAL_WAIT_SUM: 1978.087762
+TOTAL_WAIT_SUM: 2018.929522
+TOTAL_WAIT_SUM: 1993.981994
+TOTAL_WAIT_SUM: 1894.341773
+TOTAL_WAIT_SUM: 1553.650533
+TOTAL_WAIT_SUM: 1956.013979
+TOTAL_WAIT_SUM: 1880.991592
+TOTAL_WAIT_SUM: 1584.796784
+TOTAL_WAIT_SUM: 1653.794781
+TOTAL_WAIT_SUM: 1874.596143
+TOTAL_WAIT_SUM: 2066.181490
+TOTAL_WAIT_SUM: 1782.592263
+TOTAL_WAIT_SUM: 2008.699911
+TOTAL_WAIT_SUM: 2000.576032
+TOTAL_WAIT_SUM: 1791.186455
+TOTAL_WAIT_SUM: 1830.579323
+AVERAGE_IO_TASK_WAIT_SUM_11_CHILDREN: 1973.79
+PID 3180 terminated.
+PID 3181 terminated.
+PID 3182 terminated.
+PID 3183 terminated.
+PID 3184 terminated.
+PID 3185 terminated.
+PID 3186 terminated.
+PID 3187 terminated.
+PID 3188 terminated.
+PID 3189 terminated.
+PID 3190 terminated.
+
+-----------------------------------------------------
+Starting test scenario with 12 CPU children
+-----------------------------------------------------
+3497 3498 3499 3500 3501 3502 3503 3504 3505 3506 3507 3508 Starting benchmark with 100 main iterations...
+I/O task will be pinned to vCPU 1.
+Main Iterations complete. Results from /tmp/results.txt:
+TOTAL_WAIT_SUM: 2022.503288
+TOTAL_WAIT_SUM: 2306.812039
+TOTAL_WAIT_SUM: 2279.190804
+TOTAL_WAIT_SUM: 2046.329536
+TOTAL_WAIT_SUM: 2214.623758
+TOTAL_WAIT_SUM: 2372.042563
+TOTAL_WAIT_SUM: 1929.015123
+TOTAL_WAIT_SUM: 2246.626830
+TOTAL_WAIT_SUM: 2204.453846
+TOTAL_WAIT_SUM: 2054.643479
+TOTAL_WAIT_SUM: 2223.224662
+TOTAL_WAIT_SUM: 2268.142611
+TOTAL_WAIT_SUM: 1956.451748
+TOTAL_WAIT_SUM: 2393.579434
+TOTAL_WAIT_SUM: 2330.235182
+TOTAL_WAIT_SUM: 1916.466183
+TOTAL_WAIT_SUM: 2392.139123
+TOTAL_WAIT_SUM: 2331.651421
+TOTAL_WAIT_SUM: 2414.358389
+TOTAL_WAIT_SUM: 2054.501729
+TOTAL_WAIT_SUM: 2115.791787
+TOTAL_WAIT_SUM: 2464.063894
+TOTAL_WAIT_SUM: 2130.854394
+TOTAL_WAIT_SUM: 2425.837962
+TOTAL_WAIT_SUM: 1803.687654
+TOTAL_WAIT_SUM: 2004.785484
+TOTAL_WAIT_SUM: 2376.786136
+TOTAL_WAIT_SUM: 2016.924607
+TOTAL_WAIT_SUM: 2600.702620
+TOTAL_WAIT_SUM: 2042.506454
+TOTAL_WAIT_SUM: 2011.060753
+TOTAL_WAIT_SUM: 1876.488991
+TOTAL_WAIT_SUM: 2131.013137
+TOTAL_WAIT_SUM: 1704.898038
+TOTAL_WAIT_SUM: 2173.263013
+TOTAL_WAIT_SUM: 1823.690178
+TOTAL_WAIT_SUM: 1924.062244
+TOTAL_WAIT_SUM: 1935.504786
+TOTAL_WAIT_SUM: 2042.954972
+TOTAL_WAIT_SUM: 2179.389643
+TOTAL_WAIT_SUM: 2201.512954
+TOTAL_WAIT_SUM: 1835.746293
+TOTAL_WAIT_SUM: 2100.923795
+TOTAL_WAIT_SUM: 1974.282214
+TOTAL_WAIT_SUM: 2223.973278
+TOTAL_WAIT_SUM: 2218.365137
+TOTAL_WAIT_SUM: 1914.270784
+TOTAL_WAIT_SUM: 1760.575350
+TOTAL_WAIT_SUM: 2380.576586
+TOTAL_WAIT_SUM: 2158.799695
+TOTAL_WAIT_SUM: 1887.923668
+TOTAL_WAIT_SUM: 1997.343436
+TOTAL_WAIT_SUM: 1672.751404
+TOTAL_WAIT_SUM: 2042.014789
+TOTAL_WAIT_SUM: 2233.261854
+TOTAL_WAIT_SUM: 1928.944201
+TOTAL_WAIT_SUM: 2052.885362
+TOTAL_WAIT_SUM: 1987.913154
+TOTAL_WAIT_SUM: 1984.285931
+TOTAL_WAIT_SUM: 2074.428686
+TOTAL_WAIT_SUM: 2183.276780
+TOTAL_WAIT_SUM: 2290.587741
+TOTAL_WAIT_SUM: 2145.282895
+TOTAL_WAIT_SUM: 1925.284880
+TOTAL_WAIT_SUM: 1815.861820
+TOTAL_WAIT_SUM: 1911.517032
+TOTAL_WAIT_SUM: 2207.088952
+TOTAL_WAIT_SUM: 2253.090151
+TOTAL_WAIT_SUM: 2094.604460
+TOTAL_WAIT_SUM: 2046.264986
+TOTAL_WAIT_SUM: 1854.759074
+TOTAL_WAIT_SUM: 2153.305436
+TOTAL_WAIT_SUM: 2058.000118
+TOTAL_WAIT_SUM: 1754.638729
+TOTAL_WAIT_SUM: 1932.448255
+TOTAL_WAIT_SUM: 1994.284919
+TOTAL_WAIT_SUM: 2309.241102
+TOTAL_WAIT_SUM: 2051.914753
+TOTAL_WAIT_SUM: 2096.636722
+TOTAL_WAIT_SUM: 2035.771464
+TOTAL_WAIT_SUM: 2045.613542
+TOTAL_WAIT_SUM: 1750.282309
+TOTAL_WAIT_SUM: 2095.649774
+TOTAL_WAIT_SUM: 2097.435288
+TOTAL_WAIT_SUM: 2057.060639
+TOTAL_WAIT_SUM: 1965.132727
+TOTAL_WAIT_SUM: 1995.045621
+TOTAL_WAIT_SUM: 1751.997376
+TOTAL_WAIT_SUM: 2055.016531
+TOTAL_WAIT_SUM: 2066.275437
+TOTAL_WAIT_SUM: 2261.568290
+TOTAL_WAIT_SUM: 2333.026901
+TOTAL_WAIT_SUM: 1905.205039
+TOTAL_WAIT_SUM: 2324.353491
+TOTAL_WAIT_SUM: 2254.534667
+TOTAL_WAIT_SUM: 2165.523535
+TOTAL_WAIT_SUM: 2113.324129
+TOTAL_WAIT_SUM: 2121.456054
+TOTAL_WAIT_SUM: 1713.359069
+TOTAL_WAIT_SUM: 2311.827155
+AVERAGE_IO_TASK_WAIT_SUM_12_CHILDREN: 2088.7
+PID 3497 terminated.
+PID 3498 terminated.
+PID 3499 terminated.
+PID 3500 terminated.
+PID 3501 terminated.
+PID 3502 terminated.
+PID 3503 terminated.
+PID 3504 terminated.
+PID 3505 terminated.
+PID 3506 terminated.
+PID 3507 terminated.
+PID 3508 terminated.
+All Benchmarks complete.
+Flash device refused suspend due to active operation (state 20)
+Flash device refused suspend due to active operation (state 20)
+reboot: Power down

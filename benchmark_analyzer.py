@@ -83,7 +83,12 @@ def create_plot(results_data, output_filename="benchmark_comparison.png"):
 
     ax1.set_ylabel('Mean Wait Time (ms)', fontsize=12)
     ax1.set_xlabel('Number of Competing CPU-Bound Processes', fontsize=12)
-    ax1.set_title('Scheduler Wait Time Before vs. After Wakeup Boost Patch', fontsize=16, pad=20)
+    ax1.set_title(
+        'Scheduler Wait Time Before vs. After Wakeup Boost Patch\n'
+        '100 iterations per load; IQR-filtered mean and standard deviation',
+        fontsize=16,
+        pad=20,
+    )
     ax1.set_xticks(x)
     ax1.set_xticklabels(labels)
     ax1.legend(loc='upper left')
@@ -91,6 +96,7 @@ def create_plot(results_data, output_filename="benchmark_comparison.png"):
 
     ax1.bar_label(rects1, padding=3, fmt='%.0f')
     ax1.bar_label(rects2, padding=3, fmt='%.0f')
+    ax1.set_ylim(0, max(before_means + after_means) * 1.18)
 
     # Line Chart for Improvement
     ax2 = ax1.twinx()

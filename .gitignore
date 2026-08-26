@@ -11,10 +11,7 @@
 /C_files/io_load
 /C_files/kill_cpu_loads
 /C_files/cpu_pids.txt
-/before_output.txt
-/after_output.txt
 /results.dat
-/report/benchmark_comparison.png
 __pycache__/
 *.py[cod]
 

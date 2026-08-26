@@ -336,16 +336,24 @@ for forks in $FORK_COUNTS; do
     echo ""
 done
 
-# Call the analyzer with the output logs
-if [ -n "$CALLING_USER" ]; then
-    chown -R "$CALLING_UID:$CALLING_GID" "$RESULTS_DIR"
-    USER_SHELL=$(getent passwd "$CALLING_USER" | awk -F: '{print $7}')
-    ANALYZER_PYTHON=$(sudo -u "$CALLING_USER" -H "$USER_SHELL" -lc 'command -v python3' | tail -n 1)
-    sudo -u "$CALLING_USER" -H "$ANALYZER_PYTHON" \
-        "$SCRIPT_DIR/benchmark_analyzer.py" "$BEFORE_OUTPUT" "$AFTER_OUTPUT" --output "$GRAPH_FILE"
-else
-    python3 "$SCRIPT_DIR/benchmark_analyzer.py" \
-        "$BEFORE_OUTPUT" "$AFTER_OUTPUT" --output "$GRAPH_FILE"
+# Call the analyzer with the output logs. Plotting is post-processing, so a
+# missing Python dependency must not make a completed benchmark look failed.
+run_analyzer() {
+    if [ -n "$CALLING_USER" ]; then
+        chown -R "$CALLING_UID:$CALLING_GID" "$RESULTS_DIR"
+        USER_SHELL=$(getent passwd "$CALLING_USER" | awk -F: '{print $7}')
+        ANALYZER_PYTHON=$(sudo -u "$CALLING_USER" -H "$USER_SHELL" -lc 'command -v python3' | tail -n 1)
+        sudo -u "$CALLING_USER" -H env MPLBACKEND=Agg "$ANALYZER_PYTHON" \
+            "$SCRIPT_DIR/benchmark_analyzer.py" "$BEFORE_OUTPUT" "$AFTER_OUTPUT" --output "$GRAPH_FILE"
+    else
+        MPLBACKEND=Agg python3 "$SCRIPT_DIR/benchmark_analyzer.py" \
+            "$BEFORE_OUTPUT" "$AFTER_OUTPUT" --output "$GRAPH_FILE"
+    fi
+}
+
+if ! run_analyzer; then
+    echo "Warning: the benchmark data is complete, but Python post-processing failed."
+    echo "Run benchmark_analyzer.py manually after installing NumPy and Matplotlib."
 fi
 
 echo "Test completed! Review $BEFORE_OUTPUT and $AFTER_OUTPUT for full logs."
